@@ -12,25 +12,33 @@ export default class App extends React.Component {
 
         this.state = {
             timerActive: false,
-            totalTime: 0
+            timerEnd: false,
+            timer: {}
         }
     }
 
-    onSetTimer = time => {
+    onSetTimer = timer => {
         this.setState({
             timerActive: true,
-            totalTime: time
+            timer
+        })
+    }
+
+    onTimerEnd = () => {
+        this.setState({
+            timerActive: false,
+            timerEnd: true
         })
     }
 
     render () {
-        const { timerActive, totalTime } = this.state
+        const { timerActive, timer } = this.state
 
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>Pawductivity</Text>
                 {timerActive
-                    ? <Timer totalTime={totalTime} />
+                    ? <Timer timer={timer} />
                     : <TimeSlider onSetTimer={this.onSetTimer} />
                 }
             </View>

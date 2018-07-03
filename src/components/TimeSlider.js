@@ -2,6 +2,8 @@
 import React from 'react'
 import { Button, Text, View } from 'react-native'
 import { Slider } from 'react-native-elements'
+import moment from 'moment'
+moment().format('HH:mm:ss')
 
 class TimeSlider extends React.Component {
     constructor () {
@@ -13,7 +15,11 @@ class TimeSlider extends React.Component {
     }
 
     onPress = () => {
-        this.props.onSetTimer(this.state.value)
+        const timer = {
+            amount: this.state.value,
+            startTime: new Date().getTime()
+        }
+        this.props.onSetTimer(timer)
     }
 
     render () {
