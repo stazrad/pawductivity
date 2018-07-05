@@ -9,4 +9,6 @@ dependencies: \
   /Users/jakewebb/Desktop/pawductivity/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
   /Users/jakewebb/Desktop/pawductivity/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
   /Users/jakewebb/Desktop/pawductivity/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
-  /Users/jakewebb/Desktop/pawductivity/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h
+  /Users/jakewebb/Desktop/pawductivity/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/jakewebb/Desktop/pawductivity/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPushNotificationManager.h \
+  /Users/jakewebb/Desktop/pawductivity/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventEmitter.h
