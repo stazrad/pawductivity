@@ -10,7 +10,7 @@ class TimeSlider extends React.Component {
         super()
 
         this.state = {
-            value: 5
+            value: 25
         }
     }
 
@@ -25,6 +25,7 @@ class TimeSlider extends React.Component {
     render () {
         return ([
             <Text key='0' style={styles.header}>How long would you like to be pawductive?</Text>,
+            <Text key='2' style={styles.timeText}>Time: <Text style={styles.time}>{this.state.value}</Text> minutes</Text>,
             <Slider
                 key='1'
                 style={styles.slider}
@@ -32,7 +33,6 @@ class TimeSlider extends React.Component {
                 minimumValue={5}
                 maximumValue={90}
                 onValueChange={(value) => this.setState({value: Math.round(value)})} />,
-            <Text key='2'>Time: {this.state.value} minutes</Text>,
             <View
                 key='3'
                 style={styles.buttonContainer}>
@@ -49,7 +49,13 @@ class TimeSlider extends React.Component {
 const styles = {
     header: {
         fontSize: 16,
-        paddingBottom: 20
+        paddingBottom: 80
+    },
+    timeText: {
+        fontSize: 20
+    },
+    time: {
+        fontSize: 30
     },
     slider: {
         alignSelf: 'stretch',

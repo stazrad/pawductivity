@@ -1,6 +1,7 @@
 // packages
 import React from 'react'
-import { Text } from 'react-native'
+import { AppState, Text } from 'react-native'
+import PushNotification from 'react-native-push-notification'
 
 class Timer extends React.Component {
     constructor (props) {
@@ -28,16 +29,22 @@ class Timer extends React.Component {
         const logger = setInterval(() => {
             const now = new Date().getTime()
             const distance = now - startTime
-            const hoursPassed = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-            const minutesPassed = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
             const secondsPassed = Math.floor((distance % (1000 * 60)) / 1000)
-            const minutes = this.state.minutes - minutesPassed
-            const seconds = this.state.seconds - 1
-            console.log(this.state.minutes, this.state.seconds)
+            let minutes = this.state.minutes
+            let seconds = this.state.seconds - 1
+
+            if (seconds < 0) {
+                seconds = 59
+                minutes = minutes - 1
+            }
+            if (seconds < 10) {
+                seconds = '0' + seconds
+            }
 
             this.setState({minutes, seconds})
 
-            if (distance < 0) {
+            if (minutes === 0 && seconds == 0) {
+                alert('we done, homie')
                 clearInterval(logger)
             }
         }, 1000)
@@ -45,6 +52,21 @@ class Timer extends React.Component {
 
     componentDidMount () {
         this.runTimer()
+        AppState.addEventListener('change', this.handleAppStateChange)
+    }
+
+    componentWillUnMount () {
+        AppState.removeEventListener('change', this.handleAppStateChange)
+    }
+
+    handleAppStateChange (appState) {
+        if (appState === 'background') {
+            // TODO add push notification here
+            const details = {
+                alertBody: 'You left the app, bitch!'
+            }
+            PushNotification.presentLocalNotification(details)
+        }
     }
 
     render () {

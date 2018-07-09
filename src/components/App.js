@@ -1,12 +1,11 @@
 // packages
 import React from 'react'
-import { AppState, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 
 // imports
 import TimeSlider from 'components/TimeSlider'
 import Timer from 'components/Timer'
-console.log('push', PushNotification)
 
 export default class App extends React.Component {
     constructor () {
@@ -34,15 +33,13 @@ export default class App extends React.Component {
     }
 
     componentDidMount () {
-        AppState.addEventListener('change', this.handleAppStateChange)
-
         PushNotification.configure({
             // (optional) Called when Token is generated (iOS and Android)
-            onRegister: function(token) {
+            onRegister: (token) => {
                 console.log( 'TOKEN:', token );
             },
             // (required) Called when a remote or local notification is opened or received
-            onNotification: function(notification) {
+            onNotification: (notification) => {
                 console.log( 'NOTIFICATION:', notification );
                 // process the notification
                 // required on iOS only (see fetchCompletionHandler docs: https://facebook.github.io/react-native/docs/pushnotificationios.html)
@@ -66,20 +63,6 @@ export default class App extends React.Component {
               */
             requestPermissions: true,
         })
-    }
-
-    componentWillUnMount () {
-        AppState.removeEventListener('change', this.handleAppStateChange)
-    }
-
-    handleAppStateChange (appState) {
-        if (appState === 'background') {
-            // TODO add push notification here
-            const details = {
-                alertBody: 'You left the app, bitch!'
-            }
-            PushNotification.presentLocalNotification(details)
-        }
     }
 
     render () {
