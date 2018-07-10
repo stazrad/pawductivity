@@ -56,13 +56,16 @@ const styles = {
         fontSize: 30
     },
     slider: {
-        alignSelf: 'stretch',
-        margin: 40
+        alignSelf: 'stretch'
     },
     buttonContainer: {
         backgroundColor: 'black',
-        width: 100,
+        alignSelf: 'stretch',
         marginTop: 20,
         borderRadius: 5
+    },
+    button: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 }

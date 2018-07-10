@@ -1,18 +1,18 @@
 // packages
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { Input } from 'react-native-elements'
 import PushNotification from 'react-native-push-notification'
 
 // imports
-import TimeSlider from './TimeSlider'
-import Timer from './Timer'
+import StartScreen from './StartScreen'
+import TimerScreen from './TimerScreen'
 
 export default class App extends React.Component {
     constructor () {
         super()
 
         this.state = {
+            goals: [],
             timerActive: false,
             timerEnd: false,
             timer: {}
@@ -67,15 +67,14 @@ export default class App extends React.Component {
     }
 
     render () {
-        const { timerActive, timer } = this.state
+        const { goals, timerActive, timer } = this.state
 
         return (
             <View style={styles.container}>
-                <Text style={styles.header}>Pawductivity!</Text>
-                <Input placeholder='Be pawductive!' />
-                {timerActive
-                    ? <Timer timer={timer} />
-                    : <TimeSlider onSetTimer={this.onSetTimer} />
+                {/* <Text style={styles.header}>Pawductivity!</Text> */}
+                {!timerActive
+                    ? <StartScreen onSetTimer={this.onSetTimer} />
+                    : <TimerScreen timer={timer} goals={goals} />
                 }
             </View>
         )
@@ -88,6 +87,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#cceeff',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 20
     },
     header: {
         fontSize: 22,
