@@ -6,7 +6,7 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		7KD+KE1JybqqZvr+FY6zOT/H928=
+		y3k5zdAx86cdz6ipQY/DDH16eUQ=
 		</data>
 		<key>Entypo.ttf</key>
 		<data>
@@ -99,7 +99,7 @@
 		</data>
 		<key>PlugIns/PawductivityTests.xctest.dSYM/Contents/Resources/DWARF/PawductivityTests</key>
 		<data>
-		IcS04DSG8p17ILs5YdMhOrzTntg=
+		dRgyiuElIBcJEg7YDBoiFs63vfc=
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/Info.plist</key>
 		<data>
@@ -107,7 +107,7 @@
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/PawductivityTests</key>
 		<data>
-		wSyl5/e5xdxYGw7yMgoUUTrGoR4=
+		M2AIck4eVKNeCLn5zA3V4/6+zG8=
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
@@ -128,11 +128,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7KD+KE1JybqqZvr+FY6zOT/H928=
+			y3k5zdAx86cdz6ipQY/DDH16eUQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			qB4CGE0/igWP9CHsmyV37lHr+y+yQjeh/8MgwgugEQY=
+			6m2qboo3CdOwwH2m/2uibDtt/H4IkFrcJ3DKXXfC5GY=
 			</data>
 		</dict>
 		<key>Entypo.ttf</key>
@@ -350,11 +350,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IcS04DSG8p17ILs5YdMhOrzTntg=
+			dRgyiuElIBcJEg7YDBoiFs63vfc=
 			</data>
 			<key>hash2</key>
 			<data>
-			9ipsF/ziPz1S/txmJAY1BeHi3laeETwUMWG2PKHjStw=
+			kAyhKbz+jmW6Cq/ZPjJIYvOB4S7SkL1XaSq2QI2iVFw=
 			</data>
 		</dict>
 		<key>PlugIns/PawductivityTests.xctest/Info.plist</key>
@@ -372,11 +372,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wSyl5/e5xdxYGw7yMgoUUTrGoR4=
+			M2AIck4eVKNeCLn5zA3V4/6+zG8=
 			</data>
 			<key>hash2</key>
 			<data>
-			5ltOpDXGhHp5nPk/QDdc57gKvBYkV7nlSxpT/fIkiEk=
+			LA+mjc4cqz2PB2tiH/a1WlH4RZw/D1HzUg46gSnAu4Q=
 			</data>
 		</dict>
 		<key>PlugIns/PawductivityTests.xctest/_CodeSignature/CodeResources</key>

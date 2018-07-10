@@ -1,11 +1,12 @@
 // packages
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { Input } from 'react-native-elements'
 import PushNotification from 'react-native-push-notification'
 
 // imports
-import TimeSlider from 'components/TimeSlider'
-import Timer from 'components/Timer'
+import TimeSlider from './TimeSlider'
+import Timer from './Timer'
 
 export default class App extends React.Component {
     constructor () {
@@ -71,6 +72,7 @@ export default class App extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>Pawductivity!</Text>
+                <Input placeholder='Be pawductive!' />
                 {timerActive
                     ? <Timer timer={timer} />
                     : <TimeSlider onSetTimer={this.onSetTimer} />

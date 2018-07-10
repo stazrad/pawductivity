@@ -2,10 +2,8 @@
 import React from 'react'
 import { Button, Text, View } from 'react-native'
 import { Slider } from 'react-native-elements'
-import moment from 'moment'
-moment().format('HH:mm:ss')
 
-class TimeSlider extends React.Component {
+export default class TimeSlider extends React.Component {
     constructor () {
         super()
 
@@ -68,5 +66,3 @@ const styles = {
         borderRadius: 5
     }
 }
-
-export default TimeSlider
