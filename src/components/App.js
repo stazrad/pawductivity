@@ -12,7 +12,6 @@ export default class App extends React.Component {
         super()
 
         this.state = {
-            goals: [],
             timerActive: false,
             timerEnd: false,
             timer: {}
@@ -67,14 +66,14 @@ export default class App extends React.Component {
     }
 
     render () {
-        const { goals, timerActive, timer } = this.state
+        const { timerActive, timer } = this.state
 
         return (
             <View style={styles.container}>
                 {/* <Text style={styles.header}>Pawductivity!</Text> */}
                 {!timerActive
                     ? <StartScreen onSetTimer={this.onSetTimer} />
-                    : <TimerScreen timer={timer} goals={goals} />
+                    : <TimerScreen timer={timer} />
                 }
             </View>
         )

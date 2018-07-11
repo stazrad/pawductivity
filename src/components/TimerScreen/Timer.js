@@ -67,7 +67,7 @@ export default class Timer extends React.Component {
         const { amount } = this.props.timer
 
         return ([
-            <Text key='0'>Timer set for {amount} minutes!</Text>,
+            // <Text key='0'>...just {amount} minutes!</Text>,
             <Text key='1' style={styles.numbers}>{minutes}:{seconds}</Text>
         ])
     }
@@ -76,6 +76,6 @@ export default class Timer extends React.Component {
 const styles = {
     numbers: {
         fontSize: 80,
-        marginTop: 80
+        marginTop: 80,
     }
 }

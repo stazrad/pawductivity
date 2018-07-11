@@ -13,7 +13,7 @@ export default class StartScreen extends React.Component {
 
         this.state = {
             text: '',
-            goals: []
+            goal: ''
         }
     }
 
@@ -26,39 +26,39 @@ export default class StartScreen extends React.Component {
     }
 
     addGoal = () => {
-        this.setState({
-            goals: [ ...this.state.goals, this.state.text],
-            text: ''
-        })
-    }
-
-    renderGoals = () => {
-        return this.state.goals.map((goal, i) => (
-            <Text key={i} style={styles.goalAdded}>{goal}</Text>
-        ))
+        const goal = this.state.text
+        this.setState({goal})
+        this.props.onSetGoal(goal)
     }
 
     render () {
+        const { goal, text } = this.state
+
         return ([
-            <Text key='0' style={styles.header}>Add goals for this session:</Text>,
-            this.renderGoals(),
+            <Text key='0' style={styles.header}>Set a Goal:</Text>,
             <View key='1' style={styles.goalsContainer}>
-                <TouchableHighlight
-                    style={styles.iconContainer}
-                    onPress={this.addGoal}
-                    underlayColor='grey'>
-                    <Icon
-                        name='plus'
-                        size={24}
-                        color='black' />
-                </TouchableHighlight>
                 <View style={styles.inputContainer}>
                     <Input
-                        placholder='Be pawductive!'
-                        style={styles.input}
+                        placeholder='Be pawductive...'
+                        placeholderTextColor='#c3c3c3'
+                        inputStyle={styles.input}
                         onChangeText={this.onChangeText}
                         onFocus={this.onFocus}
-                        value={this.state.text} />
+                        value={text}
+                        // multiline
+                        focus={!goal}
+                        leftIcon={
+                            <TouchableHighlight
+                                style={styles.iconContainer}
+                                onPress={this.addGoal}
+                                underlayColor='#f1f1f1'
+                                disabled={!text}>
+                                <Icon
+                                    name={goal ? 'check' : 'plus'}
+                                    size={30}
+                                    color={text ? 'black' : '#ababab'} />
+                            </TouchableHighlight>
+                        } />
                 </View>
             </View>
         ])
@@ -67,7 +67,7 @@ export default class StartScreen extends React.Component {
 
 const styles = {
     header: {
-        fontSize: 22,
+        fontSize: 40,
         alignContent: 'flex-start',
         marginTop: 30,
         marginBottom: 10
@@ -77,18 +77,19 @@ const styles = {
         marginTop: 20
     },
     inputContainer: {
-        flex: 11,
-        backgroundColor: '#b3e6ff',
+        flex: 1,
         borderRadius: 5,
         justifyContent: 'center'
     },
     input: {
+        fontSize: 25,
+        fontWeight: 'bold',
         paddingBottom: 2,
         color: 'black',
+        borderBottomWidth: 3
     },
     iconContainer: {
-        flex: 1,
-        paddingTop: 10,
+        paddingTop: 5,
         paddingLeft: 5,
         justifyContent: 'center',
         alignContent: 'center',
