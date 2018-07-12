@@ -1,6 +1,14 @@
 // packages
 import React from 'react'
-import { Keyboard, Text, TouchableHighlight, View } from 'react-native'
+import {
+    Image,
+    Keyboard,
+    KeyboardAvoidingView,
+    StyleSheet,
+    Text,
+    TouchableHighlight,
+    View
+} from 'react-native'
 import { Input } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
 console.log(Keyboard)
@@ -35,68 +43,101 @@ export default class StartScreen extends React.Component {
         const { goal, text } = this.state
 
         return ([
-            <Text key='0' style={styles.header}>Set a Goal:</Text>,
-            <View key='1' style={styles.goalsContainer}>
+            <Text key='0' style={styles.header}>Let's be pawductive!</Text>,
+            <View key='1' style={styles.imageContainer}>
+                <Image
+                source={require('../../images/pet/dog/excited.png')}
+                style={styles.image} />
+            </View>,
+            <KeyboardAvoidingView key='2' style={styles.goalsContainer}>
                 <View style={styles.inputContainer}>
                     <Input
-                        placeholder='Be pawductive...'
-                        placeholderTextColor='#c3c3c3'
+                        placeholder='Should we set a goal?'
+                        placeholderTextColor='grey'
                         inputStyle={styles.input}
                         onChangeText={this.onChangeText}
                         onFocus={this.onFocus}
                         value={text}
                         // multiline
-                        focus={!goal}
-                        leftIcon={
-                            <TouchableHighlight
-                                style={styles.iconContainer}
-                                onPress={this.addGoal}
-                                underlayColor='#f1f1f1'
-                                disabled={!text}>
-                                <Icon
-                                    name={goal ? 'check' : 'plus'}
-                                    size={30}
-                                    color={text ? 'black' : '#ababab'} />
-                            </TouchableHighlight>
-                        } />
+                        focus={!goal} />
                 </View>
-            </View>
+                {text
+                    ? <TouchableHighlight
+                        style={styles.iconContainer}
+                        onPress={this.addGoal}
+                        underlayColor='#f1f1f1'
+                        disabled={!text}>
+                            <Icon
+                                name={goal ? 'check' : 'plus'}
+                                size={30}
+                                color={text ? 'black' : '#ababab'} />
+                        </TouchableHighlight>
+                    : null
+                }
+            </KeyboardAvoidingView>
         ])
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     header: {
-        fontSize: 40,
+        flex: 1,
+        fontSize: 30,
         alignContent: 'flex-start',
         marginTop: 30,
         marginBottom: 10
     },
+    imageContainer: {
+        flex: 3,
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+    },
+    image: {
+        alignSelf: 'stretch',
+        flex: 1,
+        height: undefined,
+        width: undefined,
+        resizeMode: 'contain'
+    },
     goalsContainer: {
-        flexDirection: 'row',
+        flex: 1,
+        alignSelf: 'stretch',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginTop: 20
     },
     inputContainer: {
-        flex: 1,
         borderRadius: 5,
-        justifyContent: 'center'
+        flex: 1,
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(181, 181, 181, 0.2)',
     },
     input: {
+        flex: 1,
         fontSize: 25,
-        fontWeight: 'bold',
-        paddingBottom: 2,
+        alignSelf: 'stretch',
+        fontStyle: 'italic',
+        // fontWeight: 'bold',
+        // paddingBottom: 20,
         color: 'black',
         borderBottomWidth: 3
     },
     iconContainer: {
+        flex: 1,
         paddingTop: 5,
         paddingLeft: 5,
         justifyContent: 'center',
         alignContent: 'center',
+        alignSelf: 'stretch',
         borderRadius: 5
     },
     goalAdded: {
         fontSize: 16,
         alignSelf: 'stretch'
     }
-}
+})
