@@ -81,14 +81,13 @@ export default class StartScreen extends React.Component {
 
 const styles = StyleSheet.create({
     header: {
-        flex: 1,
         fontSize: 30,
         alignContent: 'flex-start',
         marginTop: 30,
         marginBottom: 10
     },
     imageContainer: {
-        flex: 3,
+        flex: 2,
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(181, 181, 181, 0.2)',
+        // backgroundColor: 'rgba(181, 181, 181, 0.2)',
     },
     input: {
         flex: 1,
