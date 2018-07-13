@@ -6,14 +6,15 @@ import {
     KeyboardAvoidingView,
     StyleSheet,
     Text,
+    TextInput,
     TouchableHighlight,
     View
 } from 'react-native'
 import { Input } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
-console.log(Keyboard)
 
 // imports
+import theme from '../../theme'
 
 export default class StartScreen extends React.Component {
     constructor () {
@@ -43,17 +44,16 @@ export default class StartScreen extends React.Component {
         const { goal, text } = this.state
 
         return ([
-            <Text key='0' style={styles.header}>Let's be pawductive!</Text>,
             <View key='1' style={styles.imageContainer}>
                 <Image
-                source={require('../../images/pet/dog/excited.png')}
+                source={require('../../images/pet/dog/ready-1.png')}
                 style={styles.image} />
             </View>,
             <KeyboardAvoidingView key='2' style={styles.goalsContainer}>
                 <View style={styles.inputContainer}>
-                    <Input
-                        placeholder='Should we set a goal?'
-                        placeholderTextColor='grey'
+                    <TextInput
+                        placeholder='WANT TO SET A GOAL?'
+                        placeholderTextColor={theme.black}
                         inputStyle={styles.input}
                         onChangeText={this.onChangeText}
                         onFocus={this.onFocus}
@@ -70,7 +70,7 @@ export default class StartScreen extends React.Component {
                             <Icon
                                 name={goal ? 'check' : 'plus'}
                                 size={30}
-                                color={text ? 'black' : '#ababab'} />
+                                color={text ? theme.black : '#ababab'} />
                         </TouchableHighlight>
                     : null
                 }
@@ -110,11 +110,11 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         borderRadius: 5,
-        flex: 1,
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: 'rgba(181, 181, 181, 0.2)',
+        height: 50,
+        backgroundColor: theme.grey,
     },
     input: {
         flex: 1,
@@ -123,8 +123,7 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         // fontWeight: 'bold',
         // paddingBottom: 20,
-        color: 'black',
-        borderBottomWidth: 3
+        color: theme.black,
     },
     iconContainer: {
         flex: 1,

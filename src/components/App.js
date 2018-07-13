@@ -1,11 +1,12 @@
 // packages
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 
 // imports
 import StartScreen from './StartScreen'
 import TimerScreen from './TimerScreen'
+import theme from '../theme'
 
 export default class App extends React.Component {
     constructor () {
@@ -70,7 +71,11 @@ export default class App extends React.Component {
 
         return (
             <View style={styles.container}>
-                {/* <Text style={styles.header}>Pawductivity!</Text> */}
+                <View style={styles.imageContainer}>
+                    <Image
+                    source={require('../images/logo.png')}
+                    style={styles.image} />
+                </View>
                 {!timerActive
                     ? <StartScreen onSetTimer={this.onSetTimer} />
                     : <TimerScreen timer={timer} />
@@ -83,14 +88,27 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#cceeff',
+        backgroundColor: '#cdeaed',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20
+        padding: 20,
+        paddingLeft: 40,
+        paddingRight: 40,
     },
-    header: {
-        fontSize: 22,
-        alignContent: 'flex-start',
-        paddingBottom: 200
-    }
+    imageContainer: {
+        marginTop: 25,
+        marginBottom: 40,
+        height: 22,
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+    },
+    image: {
+        alignSelf: 'stretch',
+        flex: 1,
+        height: undefined,
+        width: undefined,
+        resizeMode: 'contain'
+    },
 })

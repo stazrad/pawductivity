@@ -3,6 +3,9 @@ import React from 'react'
 import { Button, Text, View } from 'react-native'
 import { Slider } from 'react-native-elements'
 
+// imports
+import theme from '../../theme'
+
 export default class TimeSlider extends React.Component {
     constructor () {
         super()
@@ -21,24 +24,29 @@ export default class TimeSlider extends React.Component {
     }
 
     render () {
+        const { value } = this.state
+
         return (
             <View style={styles.container}>
-                <Text key='2' style={styles.timeText}>Time: <Text style={styles.time}>{this.state.value}</Text> minutes</Text>
+                <Text key='2' style={styles.time}>{value}:00</Text>
                 <Slider
                     key='1'
                     style={styles.slider}
-                    value={this.state.value}
+                    value={value}
+                    step={5}
+                    thumbStyle={styles.thumbStyle}
+                    trackStyle={styles.trackStyle}
                     minimumValue={5}
                     maximumValue={90}
-                    increment={5}
-                    onValueChange={(value) => this.setState({value: Math.round(value)})} />
+                    onValueChange={(value) => this.setState({value})}
+                />
                 <View
                     key='3'
                     style={styles.buttonContainer}>
                     <Button
                         style={styles.button}
-                        title='Focus!'
-                        color='white'
+                        title='FOCUS'
+                        color={theme.white}
                         onPress={this.onPress} />
                 </View>
             </View>
@@ -51,31 +59,34 @@ const styles = {
         flex: 1,
         alignSelf: 'stretch',
         alignItems: 'center',
-        justifyContent: 'center'
-    },
-    header: {
-        fontSize: 16,
-        paddingBottom: 80,
-    },
-    timeText: {
-        fontSize: 20,
-        paddingBottom: 40,
+        justifyContent: 'center',
     },
     time: {
-        fontSize: 30,
+        fontSize: 40,
+        color: theme.black,
+        paddingBottom: 0,
         fontWeight: 'bold',
     },
     slider: {
         alignSelf: 'stretch',
     },
+    thumbStyle: {
+        backgroundColor: theme.black,
+    },
+    trackStyle: {
+        backgroundColor: theme.black,
+    },
     buttonContainer: {
-        backgroundColor: 'black',
+        backgroundColor: theme.black,
+        height: 50,
         alignSelf: 'stretch',
-        marginTop: 20,
+        justifyContent: 'center',
+        marginTop: 10,
+        marginBottom: 10,
         borderRadius: 5
     },
     button: {
-        flex: 1,
+        height: 60,
         justifyContent: 'space-between'
     }
 }
