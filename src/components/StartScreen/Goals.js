@@ -22,7 +22,8 @@ export default class StartScreen extends React.Component {
 
         this.state = {
             text: '',
-            goal: ''
+            goal: '',
+            goalSet: false,
         }
     }
 
@@ -31,17 +32,25 @@ export default class StartScreen extends React.Component {
     }
 
     onChangeText = text => {
+        if (this.state.goal) {
+            this.setState({goal: '', goalSet: false})
+        }
         this.setState({text})
     }
 
     addGoal = () => {
         const goal = this.state.text
-        this.setState({goal})
+
+        this.setState({
+            goal,
+            goalSet: true,
+            text: '',
+        })
         this.props.onSetGoal(goal)
     }
 
     render () {
-        const { goal, text } = this.state
+        const { goal, goalSet, text } = this.state
 
         return ([
             <View key='1' style={styles.imageContainer}>
@@ -52,25 +61,22 @@ export default class StartScreen extends React.Component {
             <KeyboardAvoidingView key='2' style={styles.goalsContainer}>
                 <View style={styles.inputContainer}>
                     <TextInput
-                        placeholder='WANT TO SET A GOAL?'
+                        placeholder={goal ? goal : 'WANT TO SET A GOAL?'}
                         placeholderTextColor={theme.black}
                         inputStyle={styles.input}
                         onChangeText={this.onChangeText}
                         onFocus={this.onFocus}
                         value={text}
                         // multiline
-                        focus={!goal} />
+                        focus={!goalSet} />
                 </View>
-                {text
+                {text && !goal
                     ? <TouchableHighlight
-                        style={styles.iconContainer}
+                        style={styles.textContainer}
                         onPress={this.addGoal}
-                        underlayColor='#f1f1f1'
+                        underlayColor='orange'
                         disabled={!text}>
-                            <Icon
-                                name={goal ? 'check' : 'plus'}
-                                size={30}
-                                color={text ? theme.black : '#ababab'} />
+                            <Text style={styles.text}>SET GOAL</Text>
                         </TouchableHighlight>
                     : null
                 }
@@ -125,14 +131,23 @@ const styles = StyleSheet.create({
         // paddingBottom: 20,
         color: theme.black,
     },
-    iconContainer: {
-        flex: 1,
-        paddingTop: 5,
-        paddingLeft: 5,
-        justifyContent: 'center',
-        alignContent: 'center',
+    textContainer: {
+        height: 35,
+        // justifyContent: 'center',
+        // alignContent: 'center',
         alignSelf: 'stretch',
-        borderRadius: 5
+        alignItems: 'center',
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        backgroundColor: theme.black,
+        marginBottom: 10
+    },
+    text: {
+        color: theme.white,
+        fontSize: 15,
+        paddingTop: 8,
+        textAlign: 'center',
+        margin: 'auto',
     },
     goalAdded: {
         fontSize: 16,

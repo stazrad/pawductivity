@@ -28,9 +28,8 @@ export default class TimeSlider extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Text key='2' style={styles.time}>{value}:00</Text>
+                <Text style={styles.time}>{value}:00</Text>
                 <Slider
-                    key='1'
                     style={styles.slider}
                     value={value}
                     step={5}
@@ -41,7 +40,6 @@ export default class TimeSlider extends React.Component {
                     onValueChange={(value) => this.setState({value})}
                 />
                 <View
-                    key='3'
                     style={styles.buttonContainer}>
                     <Button
                         style={styles.button}
@@ -87,6 +85,7 @@ const styles = {
     },
     button: {
         height: 60,
+        fontWeight: 'bold',
         justifyContent: 'space-between'
     }
 }
