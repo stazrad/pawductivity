@@ -2,6 +2,7 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import PushNotification from 'react-native-push-notification'
+import { createStackNavigator } from 'react-navigation'
 
 // imports
 import StartScreen from './StartScreen'
@@ -13,6 +14,8 @@ export default class App extends React.Component {
         super()
 
         this.state = {
+            failure: false,
+            success: false,
             timerActive: false,
             timerEnd: false,
             timer: {}
@@ -33,6 +36,11 @@ export default class App extends React.Component {
         })
     }
 
+    onFailure = () => {
+        this.setState({ failure: true })
+        alert('tisk tisk, bad boi')
+    }
+
     componentDidMount () {
         PushNotification.configure({
             // (optional) Called when Token is generated (iOS and Android)
@@ -41,7 +49,6 @@ export default class App extends React.Component {
             },
             // (required) Called when a remote or local notification is opened or received
             onNotification: (notification) => {
-                alert('WE BACK')
                 console.log( 'NOTIFICATION:', notification );
                 // process the notification
                 // required on iOS only (see fetchCompletionHandler docs: https://facebook.github.io/react-native/docs/pushnotificationios.html)
@@ -79,7 +86,7 @@ export default class App extends React.Component {
                 </View>
                 {!timerActive
                     ? <StartScreen onSetTimer={this.onSetTimer} />
-                    : <TimerScreen timer={timer} />
+                    : <TimerScreen timer={timer} onFailure={this.onFailure} />
                 }
             </View>
         )

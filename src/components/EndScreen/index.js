@@ -7,6 +7,13 @@ import Display from './Display'
 import Timer from './Timer'
 
 export default class TimerScreen extends React.Component {
+    constructor (props) {
+        super(props)
+
+        this.state = {
+            status: props.status || ''
+        }
+    }
     render () {
         return ([
             <View key='0' style={styles.imageContainer}>
@@ -14,7 +21,7 @@ export default class TimerScreen extends React.Component {
                 source={require('../../images/pet/dog/working-1.png')}
                 style={styles.image} />
             </View>,
-            <Timer key='1' timer={this.props.timer} onFailure={this.props.onFailure} />,
+            <Timer key='1' timer={this.props.timer} />,
             <Display key='2' goal={this.props.timer.goal} />,
         ])
     }
