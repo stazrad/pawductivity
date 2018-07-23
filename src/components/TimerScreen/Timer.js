@@ -3,6 +3,9 @@ import React from 'react'
 import { AppState, Text } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 
+// imports
+import theme from '../../theme'
+
 export default class Timer extends React.Component {
     constructor (props) {
         super(props)
@@ -75,7 +78,9 @@ export default class Timer extends React.Component {
 
 const styles = {
     numbers: {
-        fontSize: 80,
-        marginTop: 80,
+        fontSize: 40,
+        color: theme.black,
+        marginBottom: 20,
+        fontWeight: 'bold',
     }
 }

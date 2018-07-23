@@ -41,10 +41,11 @@ export default class App extends React.Component {
             },
             // (required) Called when a remote or local notification is opened or received
             onNotification: (notification) => {
+                alert('WE BACK')
                 console.log( 'NOTIFICATION:', notification );
                 // process the notification
                 // required on iOS only (see fetchCompletionHandler docs: https://facebook.github.io/react-native/docs/pushnotificationios.html)
-                notification.finish(PushNotificationIOS.FetchResult.NoData);
+                // notification.finish(PushNotificationIOS.FetchResult.NoData);
             },
             // ANDROID ONLY: GCM Sender ID (optional - not required for local notifications, but is need to receive remote push notifications)
             senderID: "YOUR GCM SENDER ID",
@@ -88,14 +89,17 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#cdeaed',
+        backgroundColor: theme.background,
         alignItems: 'center',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
         padding: 20,
         paddingLeft: 40,
         paddingRight: 40,
     },
     imageContainer: {
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
         marginTop: 25,
         marginBottom: 40,
         height: 22,
