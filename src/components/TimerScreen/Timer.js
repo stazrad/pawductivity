@@ -16,8 +16,8 @@ export default class Timer extends React.Component {
             startTime: props.timer.startTime,
             started: false,
             leftAppAt: null,
-            minutes: props.timer.amount - 1,
-            seconds: 59
+            minutes: 0,//props.timer.amount - 1,
+            seconds: 9
         }
     }
 
@@ -39,9 +39,8 @@ export default class Timer extends React.Component {
             this.setState({minutes, seconds})
 
             if (minutes === 0 && seconds == 0) {
-                // TODO trigger completion
-                alert('we done, homie')
                 clearInterval(logger)
+                this.props.onTimerEnd('success')
             }
         }, 1000)
 

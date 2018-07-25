@@ -5,6 +5,7 @@ import PushNotification from 'react-native-push-notification'
 import { createStackNavigator } from 'react-navigation'
 
 // imports
+import EndScreen from './EndScreen'
 import StartScreen from './StartScreen'
 import TimerScreen from './TimerScreen'
 import theme from '../theme'
@@ -14,8 +15,8 @@ export default class App extends React.Component {
         super()
 
         this.state = {
-            failure: false,
-            success: false,
+            outcome: undefined,
+            screen: 'start',
             timerActive: false,
             timerEnd: false,
             timer: {}
@@ -24,13 +25,16 @@ export default class App extends React.Component {
 
     onSetTimer = timer => {
         this.setState({
+            screen: 'timer',
             timerActive: true,
             timer
         })
     }
 
-    onTimerEnd = () => {
+    onTimerEnd = outcome => {
         this.setState({
+            outcome,
+            screen: 'end',
             timerActive: false,
             timerEnd: true
         })
@@ -39,6 +43,25 @@ export default class App extends React.Component {
     onFailure = () => {
         this.setState({ failure: true })
         alert('tisk tisk, bad boi')
+    }
+
+    switchScreen = screen => {
+        this.setState({ screen })
+    }
+
+    screenSwitcher = () => {
+        const { outcome, screen, timer } = this.state
+
+        switch(screen) {
+            case 'start':
+                return <StartScreen onSetTimer={this.onSetTimer} />
+            case 'timer':
+                return <TimerScreen timer={timer} onTimerEnd={this.onTimerEnd} />
+            case 'end':
+                return <EndScreen switchScreen={this.switchScreen} outcome={outcome} />
+            default:
+                return <StartScreen onSetTimer={this.onSetTimer} />
+            }
     }
 
     componentDidMount () {
@@ -75,7 +98,7 @@ export default class App extends React.Component {
     }
 
     render () {
-        const { timerActive, timer } = this.state
+        const { screen, timerActive, timer } = this.state
 
         return (
             <View style={styles.container}>
@@ -84,10 +107,7 @@ export default class App extends React.Component {
                     source={require('../images/logo.png')}
                     style={styles.image} />
                 </View>
-                {!timerActive
-                    ? <StartScreen onSetTimer={this.onSetTimer} />
-                    : <TimerScreen timer={timer} onFailure={this.onFailure} />
-                }
+                {this.screenSwitcher()}
             </View>
         )
     }

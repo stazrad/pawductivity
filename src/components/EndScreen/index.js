@@ -3,26 +3,27 @@ import React from 'react'
 import { Image, StyleSheet, View } from 'react-native'
 
 // imports
-import Display from './Display'
-import Timer from './Timer'
 
 export default class TimerScreen extends React.Component {
     constructor (props) {
         super(props)
 
         this.state = {
-            status: props.status || ''
+            outcome: props.outcome || 'success'
         }
     }
+
     render () {
+        const { outcome } = this.state
+        const source = `../../images/pet/dog/${outcome}-1.png`
+        // TODO dynamic image routes
+
         return ([
             <View key='0' style={styles.imageContainer}>
                 <Image
-                source={require('../../images/pet/dog/working-1.png')}
+                source={require(`../../images/pet/dog/success-1.png`)}
                 style={styles.image} />
             </View>,
-            <Timer key='1' timer={this.props.timer} />,
-            <Display key='2' goal={this.props.timer.goal} />,
         ])
     }
 }

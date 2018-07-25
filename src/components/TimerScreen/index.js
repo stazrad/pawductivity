@@ -14,7 +14,7 @@ export default class TimerScreen extends React.Component {
                 source={require('../../images/pet/dog/working-1.png')}
                 style={styles.image} />
             </View>,
-            <Timer key='1' timer={this.props.timer} onFailure={this.props.onFailure} />,
+            <Timer key='1' timer={this.props.timer} onTimerEnd={this.props.onTimerEnd} />,
             <Display key='2' goal={this.props.timer.goal} />,
         ])
     }
