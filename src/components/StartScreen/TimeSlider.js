@@ -2,6 +2,7 @@
 import React from 'react'
 import { Button, Text, View } from 'react-native'
 import { Slider } from 'react-native-elements'
+import  ReactNativeHapticFeedback from 'react-native-haptic-feedback'
 
 // imports
 import theme from '../../theme'
@@ -23,6 +24,13 @@ export default class TimeSlider extends React.Component {
         this.props.onTimerStart(timerConfig)
     }
 
+    onSlide = value => {
+        this.setState({value})
+        if (value !== this.state.value) {
+            ReactNativeHapticFeedback.trigger('impactMedium', true)
+        }
+    }
+
     render () {
         const { value } = this.state
 
@@ -37,7 +45,7 @@ export default class TimeSlider extends React.Component {
                     trackStyle={styles.trackStyle}
                     minimumValue={5}
                     maximumValue={90}
-                    onValueChange={(value) => this.setState({value})}
+                    onValueChange={this.onSlide}
                 />
                 <View
                     style={styles.buttonContainer}>
