@@ -1,3 +1,3 @@
-import { AppRegistry } from 'react-native';
-import App from 'components/App';
-AppRegistry.registerComponent('Pawductivity', () => App);
+import { AppRegistry } from 'react-native'
+import App from './src/components/App'
+AppRegistry.registerComponent('Pawductivity', () => App)
