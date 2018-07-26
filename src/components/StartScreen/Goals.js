@@ -27,15 +27,15 @@ export default class StartScreen extends React.Component {
         }
     }
 
-    onFocus = () => {
-        // TODO pull up keyboard?
-    }
-
     onChangeText = text => {
         if (this.state.goal) {
             this.setState({goal: '', goalSet: false})
         }
         this.setState({text})
+    }
+
+    onFocus = () => {
+        this.setState({ text: '' })
     }
 
     addGoal = () => {
@@ -47,6 +47,7 @@ export default class StartScreen extends React.Component {
             text: '',
         })
         this.props.onSetGoal(goal)
+        Keyboard.dismiss()
     }
 
     render () {
@@ -58,19 +59,23 @@ export default class StartScreen extends React.Component {
                 source={require('../../images/pet/dog/ready-1.png')}
                 style={styles.image} />
             </View>,
-            <KeyboardAvoidingView key='2' style={styles.goalsContainer}>
+            <KeyboardAvoidingView
+                key='2'
+                style={styles.goalsContainer}
+                behavior='padding'
+                enabled>
                 <View style={styles.inputContainer}>
                     <TextInput
                         placeholder={goal ? goal : 'WANT TO SET A GOAL?'}
                         placeholderTextColor={theme.black}
-                        inputStyle={styles.input}
+                        style={styles.input}
                         onChangeText={this.onChangeText}
                         onFocus={this.onFocus}
                         value={text}
-                        // multiline
-                        focus={!goalSet} />
+                        onSubmitEditing={this.addGoal}
+                        returnKeyType='done' />
                 </View>
-                {text && !goal
+                {/* {text && !goal
                     ? <TouchableHighlight
                         style={styles.textContainer}
                         onPress={this.addGoal}
@@ -79,7 +84,7 @@ export default class StartScreen extends React.Component {
                             <Text style={styles.text}>SET GOAL</Text>
                         </TouchableHighlight>
                     : null
-                }
+                } */}
             </KeyboardAvoidingView>
         ])
     }
@@ -119,16 +124,14 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
+        paddingLeft: 5,
+        paddingRight: 5,
         height: 50,
         backgroundColor: theme.grey,
     },
     input: {
-        flex: 1,
-        fontSize: 25,
-        alignSelf: 'stretch',
-        fontStyle: 'italic',
-        // fontWeight: 'bold',
-        // paddingBottom: 20,
+        paddingBottom: 15,
+        paddingTop: 15,
         color: theme.black,
     },
     textContainer: {
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 5,
         borderBottomRightRadius: 5,
         backgroundColor: theme.black,
-        marginBottom: 10
+        marginBottom: 10,
     },
     text: {
         color: theme.white,
@@ -151,6 +154,6 @@ const styles = StyleSheet.create({
     },
     goalAdded: {
         fontSize: 16,
-        alignSelf: 'stretch'
+        alignSelf: 'stretch',
     }
 })
