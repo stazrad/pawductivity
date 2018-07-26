@@ -19,18 +19,18 @@ export default class StartScreen extends React.Component {
         this.setState({goal})
     }
 
-    onSetTimer = timerConfig => {
+    onTimerStart = timerConfig => {
         const timer = {
             ...timerConfig,
             ...this.state
         }
-        this.props.onSetTimer(timer)
+        this.props.onTimerStart(timer)
     }
 
     render () {
         return ([
             <Goals key='0' onSetGoal={this.onSetGoal} />,
-            <TimeSlider key='1' onSetTimer={this.onSetTimer} />,
+            <TimeSlider key='1' onTimerStart={this.onTimerStart} />,
         ])
     }
 }

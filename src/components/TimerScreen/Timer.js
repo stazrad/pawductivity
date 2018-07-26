@@ -16,8 +16,8 @@ export default class Timer extends React.Component {
             startTime: props.timer.startTime,
             started: false,
             leftAppAt: null,
-            minutes: 0,//props.timer.amount - 1,
-            seconds: 9
+            minutes: props.timer.amount - 1,
+            seconds: 59
         }
     }
 
@@ -63,7 +63,7 @@ export default class Timer extends React.Component {
             alert(timeAway)
 
             if (timeAway > 10000) {
-                this.props.onFailure()
+                this.props.onTimerEnd('fail')
             }
         }
     }

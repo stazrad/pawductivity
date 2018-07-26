@@ -8,14 +8,19 @@ import Timer from './Timer'
 
 export default class TimerScreen extends React.Component {
     render () {
+        const { onTimerEnd, switchScreen, timer} = this.props
+
         return ([
             <View key='0' style={styles.imageContainer}>
                 <Image
                 source={require('../../images/pet/dog/working-1.png')}
                 style={styles.image} />
             </View>,
-            <Timer key='1' timer={this.props.timer} onTimerEnd={this.props.onTimerEnd} />,
-            <Display key='2' goal={this.props.timer.goal} />,
+            <Timer
+                key='1'
+                timer={timer}
+                onTimerEnd={onTimerEnd} />,
+            <Display key='2' goal={timer.goal} />,
         ])
     }
 }

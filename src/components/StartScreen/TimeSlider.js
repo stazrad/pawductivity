@@ -20,7 +20,7 @@ export default class TimeSlider extends React.Component {
             amount: this.state.value,
             startTime: new Date().getTime()
         }
-        this.props.onSetTimer(timerConfig)
+        this.props.onTimerStart(timerConfig)
     }
 
     render () {

@@ -23,8 +23,9 @@ export default class App extends React.Component {
         }
     }
 
-    onSetTimer = timer => {
+    onTimerStart = timer => {
         this.setState({
+            outcome: undefined,
             screen: 'timer',
             timerActive: true,
             timer
@@ -40,11 +41,6 @@ export default class App extends React.Component {
         })
     }
 
-    onFailure = () => {
-        this.setState({ failure: true })
-        alert('tisk tisk, bad boi')
-    }
-
     switchScreen = screen => {
         this.setState({ screen })
     }
@@ -54,13 +50,13 @@ export default class App extends React.Component {
 
         switch(screen) {
             case 'start':
-                return <StartScreen onSetTimer={this.onSetTimer} />
+                return <StartScreen onTimerStart={this.onTimerStart} switchScreen={this.switchScreen} />
             case 'timer':
-                return <TimerScreen timer={timer} onTimerEnd={this.onTimerEnd} />
+                return <TimerScreen timer={timer} onTimerEnd={this.onTimerEnd} switchScreen={this.switchScreen} />
             case 'end':
-                return <EndScreen switchScreen={this.switchScreen} outcome={outcome} />
+                return <EndScreen switchScreen={this.switchScreen} outcome={outcome} switchScreen={this.switchScreen} />
             default:
-                return <StartScreen onSetTimer={this.onSetTimer} />
+                return <StartScreen onTimerStart={this.onTimerStart} switchScreen={this.switchScreen} />
             }
     }
 
