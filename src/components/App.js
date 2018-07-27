@@ -1,6 +1,12 @@
 // packages
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import {
+    AsyncStorage,
+    Image,
+    StyleSheet,
+    Text,
+    View
+} from 'react-native'
 import PushNotification from 'react-native-push-notification'
 import { createStackNavigator } from 'react-navigation'
 
@@ -54,10 +60,35 @@ export default class App extends React.Component {
             case 'timer':
                 return <TimerScreen timer={timer} onTimerEnd={this.onTimerEnd} switchScreen={this.switchScreen} />
             case 'end':
-                return <EndScreen switchScreen={this.switchScreen} outcome={outcome} switchScreen={this.switchScreen} />
+                return <EndScreen
+                        outcome={outcome}
+                        setStoredTotalMinutes={this.setStoredTotalMinutes}
+                        switchScreen={this.switchScreen} />
             default:
                 return <StartScreen onTimerStart={this.onTimerStart} switchScreen={this.switchScreen} />
             }
+    }
+
+    getStoredTotalMinutes = async () => {
+        try {
+            return await AsyncStorage.getItem('totalMinutes')
+        } catch (err) {
+            // alert('error gettin!')
+        }
+    }
+
+    setStoredTotalMinutes = async () => {
+        try {
+            const storedTotal = await this.getStoredTotalMinutes()
+            const stored = parseFloat(storedTotal)
+            const amount = parseFloat(this.state.timer.amount || '0')
+            const newTotal = (stored + amount).toString()
+
+            AsyncStorage.setItem('totalMinutes', newTotal)
+            return newTotal
+        } catch (err) {
+
+        }
     }
 
     componentDidMount () {

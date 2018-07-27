@@ -1,6 +1,12 @@
 // packages
 import React from 'react'
-import { Button, Image, StyleSheet, View } from 'react-native'
+import {
+    AsyncStorage,
+    Button,
+    Image,
+    StyleSheet,
+    View
+} from 'react-native'
 
 // imports
 import theme from '../../theme'
@@ -16,6 +22,12 @@ export default class TimerScreen extends React.Component {
 
     onPress = () => {
         this.props.switchScreen('start')
+    }
+
+    componentDidMount () {
+        if (this.state.outcome === 'success') {
+            this.props.setStoredTotalMinutes()
+        }
     }
 
     render () {
