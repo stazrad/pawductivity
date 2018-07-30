@@ -1,11 +1,11 @@
 // packages
 import React from 'react'
-import { Button, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import { Slider } from 'react-native-elements'
 import  ReactNativeHapticFeedback from 'react-native-haptic-feedback'
 
 // imports
-import theme from '../../theme'
+import theme from '../theme'
 
 export default class TimeSlider extends React.Component {
     constructor () {
@@ -33,6 +33,7 @@ export default class TimeSlider extends React.Component {
 
     render () {
         const { value } = this.state
+        const { buttonText } = this.props
 
         return (
             <View style={styles.container}>
@@ -51,7 +52,7 @@ export default class TimeSlider extends React.Component {
                     style={styles.buttonContainer}>
                     <Button
                         style={styles.button}
-                        title='FOCUS'
+                        title={buttonText ? buttonText : 'FOCUS'}
                         color={theme.white}
                         onPress={this.onPress} />
                 </View>
@@ -60,7 +61,7 @@ export default class TimeSlider extends React.Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignSelf: 'stretch',
@@ -96,4 +97,4 @@ const styles = {
         fontWeight: 'bold',
         justifyContent: 'space-between'
     }
-}
+})

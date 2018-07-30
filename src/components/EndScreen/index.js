@@ -10,20 +10,31 @@ import {
 import PushNotification from 'react-native-push-notification'
 
 // imports
+import GoalInput from '../GoalInput'
+import ImageContainer from '../ImageContainer'
+import TimeSlider from '../TimeSlider'
 import theme from '../../theme'
-import StartScreen from '../StartScreen'
 
 export default class TimerScreen extends React.Component {
     constructor (props) {
         super(props)
 
         this.state = {
+            goal: '',
             outcome: props.outcome || 'success'
         }
     }
 
-    onPress = () => {
-        this.props.switchScreen('start')
+    onSetGoal = goal => {
+        this.setState({goal})
+    }
+
+    onTimerStart = timerConfig => {
+        const timer = {
+            ...timerConfig,
+            ...this.state
+        }
+        this.props.onTimerStart(timer)
     }
 
     getSource = outcome => {
@@ -49,52 +60,12 @@ export default class TimerScreen extends React.Component {
         const { outcome } = this.state
 
         return ([
-            <View key='0' style={styles.imageContainer}>
-                <Image
-                source={this.getSource(outcome)}
-                style={styles.image} />
-            </View>,
-            <StartScreen key='unique' />,
-            <View
-                key='1'
-                style={styles.buttonContainer}>
-                <Button
-                    style={styles.button}
-                    title={outcome === 'success' ? 'LET\'S GO AGAIN' : 'TRY AGAIN'}
-                    color={theme.white}
-                    onPress={this.onPress} />
-            </View>
+            <ImageContainer key='0' source={this.getSource(outcome)} />,
+            <GoalInput key='1' onSetGoal={this.onSetGoal} />,
+            <TimeSlider
+                key='2'
+                buttonText={outcome === 'success' ? 'LET\'S GO AGAIN' : 'TRY AGAIN'}
+                onTimerStart={this.onTimerStart} />
         ])
     }
 }
-
-const styles = StyleSheet.create({
-    imageContainer: {
-        flex: 2,
-        alignSelf: 'stretch',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-    },
-    image: {
-        alignSelf: 'stretch',
-        flex: 1,
-        height: undefined,
-        width: undefined,
-        resizeMode: 'contain'
-    },
-    buttonContainer: {
-        backgroundColor: theme.black,
-        height: 50,
-        alignSelf: 'stretch',
-        justifyContent: 'center',
-        marginTop: 10,
-        marginBottom: 10,
-        borderRadius: 5
-    },
-    button: {
-        height: 60,
-        fontWeight: 'bold',
-        justifyContent: 'space-between'
-    }
-})

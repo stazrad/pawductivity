@@ -1,7 +1,6 @@
 // packages
 import React from 'react'
 import {
-    Image,
     Keyboard,
     KeyboardAvoidingView,
     StyleSheet,
@@ -11,12 +10,11 @@ import {
     View
 } from 'react-native'
 import { Input } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 // imports
-import theme from '../../theme'
+import theme from '../theme'
 
-export default class StartScreen extends React.Component {
+export default class GoalInput extends React.Component {
     constructor () {
         super()
 
@@ -53,14 +51,8 @@ export default class StartScreen extends React.Component {
     render () {
         const { goal, goalSet, text } = this.state
 
-        return ([
-            <View key='1' style={styles.imageContainer}>
-                <Image
-                source={require('../../images/pet/dog/ready-1.png')}
-                style={styles.image} />
-            </View>,
+        return (
             <KeyboardAvoidingView
-                key='2'
                 style={styles.goalsContainer}
                 behavior='padding'
                 enabled>
@@ -86,7 +78,7 @@ export default class StartScreen extends React.Component {
                     : null
                 } */}
             </KeyboardAvoidingView>
-        ])
+        )
     }
 }
 

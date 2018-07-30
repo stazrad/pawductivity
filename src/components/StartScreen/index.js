@@ -3,8 +3,9 @@ import React from 'react'
 import { View } from 'react-native'
 
 // imports
-import Goals from './Goals'
-import TimeSlider from './TimeSlider'
+import GoalInput from '../GoalInput'
+import ImageContainer from '../ImageContainer'
+import TimeSlider from '../TimeSlider'
 
 export default class StartScreen extends React.Component {
     constructor () {
@@ -29,8 +30,9 @@ export default class StartScreen extends React.Component {
 
     render () {
         return ([
-            <Goals key='0' onSetGoal={this.onSetGoal} />,
-            <TimeSlider key='1' onTimerStart={this.onTimerStart} />,
+            <ImageContainer key='0' source={require('../../images/pet/dog/ready-1.png')} />,
+            <GoalInput key='1' onSetGoal={this.onSetGoal} />,
+            <TimeSlider key='2' onTimerStart={this.onTimerStart} />,
         ])
     }
 }

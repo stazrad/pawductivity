@@ -4,6 +4,7 @@ import { Image, StyleSheet, View } from 'react-native'
 
 // imports
 import Display from './Display'
+import ImageContainer from '../ImageContainer'
 import Timer from './Timer'
 
 export default class TimerScreen extends React.Component {
@@ -11,11 +12,9 @@ export default class TimerScreen extends React.Component {
         const { onTimerEnd, switchScreen, timer} = this.props
 
         return ([
-            <View key='0' style={styles.imageContainer}>
-                <Image
-                source={require('../../images/pet/dog/working-1.png')}
-                style={styles.image} />
-            </View>,
+            <ImageContainer
+                key='0'
+                source={require('../../images/pet/dog/working-1.png')} />,
             <Timer
                 key='1'
                 timer={timer}

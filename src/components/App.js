@@ -66,9 +66,9 @@ export default class App extends React.Component {
                         switchScreen={this.switchScreen} />
             case 'end':
                 return <EndScreen
+                        onTimerStart={this.onTimerStart}
                         outcome={outcome}
-                        setStoredTotalMinutes={this.setStoredTotalMinutes}
-                        switchScreen={this.switchScreen} />
+                        setStoredTotalMinutes={this.setStoredTotalMinutes} />
             default:
                 return <StartScreen
                         onTimerStart={this.onTimerStart}
@@ -136,7 +136,7 @@ export default class App extends React.Component {
 
         return (
             <View style={styles.container}>
-                <View style={styles.imageContainer}>
+                <View style={styles.logoContainer}>
                     <Image
                     source={require('../images/logo.png')}
                     style={styles.image} />
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         paddingLeft: 40,
         paddingRight: 40,
     },
-    imageContainer: {
+    logoContainer: {
         flexDirection: 'column',
         justifyContent: 'flex-start',
         marginTop: 25,
