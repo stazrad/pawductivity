@@ -27,7 +27,7 @@ export default class TimeSlider extends React.Component {
     onSlide = value => {
         this.setState({value})
         if (value !== this.state.value) {
-            ReactNativeHapticFeedback.trigger('impactMedium', true)
+            ReactNativeHapticFeedback.trigger('impactLight', true)
         }
     }
 

@@ -1,7 +1,14 @@
 // packages
 import React from 'react'
-import { AppState, PushNotificationIOS, Text } from 'react-native'
+import {
+    AppState,
+    DeviceEventEmitter,
+    NativeEventEmitter,
+    PushNotificationIOS,
+    Text
+} from 'react-native'
 import PushNotification from 'react-native-push-notification'
+import LockState from 'react-native-lockstate'
 
 // imports
 import theme from '../../theme'
@@ -16,8 +23,9 @@ export default class Timer extends React.Component {
             startTime: props.timer.startTime,
             started: false,
             leftAppAt: null,
-            minutes: 0,// props.timer.amount - 1, FIXME
-            seconds: 5
+            phoneLocked: false,
+            minutes: props.timer.amount - 1,
+            seconds: 59
         }
     }
 
@@ -48,9 +56,18 @@ export default class Timer extends React.Component {
     }
 
     handleAppStateChange = appState => {
-        // TODO figure out how to check if phone locked
-        console.log('appState', appState)
-        if (appState === 'background') {
+        console.log(appState)
+        if (typeof appState === 'object') {
+            console.log('obj', appState)
+            if (appState.lockState === 'locked') {
+                console.log('locked')
+                this.setState({ locked: true })
+            } else {
+                this.setState({ locked: false })
+            }
+            return
+        }
+        if (appState === 'background' && !this.state.locked) {
             // https://facebook.github.io/react-native/docs/pushnotificationios.html
             const details = {
                 alertBody: 'Don\'t get distracted! Hurry back to continue being pawductive!'
@@ -68,13 +85,24 @@ export default class Timer extends React.Component {
         }
     }
 
+    handleLockStateChange = lockState => {
+        console.log('lockState', lockState)
+        if (lockState === 'locked') {
+            this.setState({ locked: true })
+        } else {
+            this.setState({ locked: false })
+        }
+    }
+
     componentDidMount () {
         this.runTimer()
         AppState.addEventListener('change', this.handleAppStateChange)
+        LockState.addEventListener('change', this.handleAppStateChange)
     }
 
     componentWillUnmount () {
         AppState.removeEventListener('change', this.handleAppStateChange)
+        LockState.removeEventListener('change', this.handleAppStateChange)
     }
 
     render () {

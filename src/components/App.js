@@ -1,7 +1,8 @@
 // packages
 import React from 'react'
-import {
+import RN, {
     AsyncStorage,
+    DeviceEventEmitter,
     Image,
     StyleSheet,
     Text,
