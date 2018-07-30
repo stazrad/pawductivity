@@ -7,9 +7,11 @@ import {
     StyleSheet,
     View
 } from 'react-native'
+import PushNotification from 'react-native-push-notification'
 
 // imports
 import theme from '../../theme'
+import StartScreen from '../StartScreen'
 
 export default class TimerScreen extends React.Component {
     constructor (props) {
@@ -24,31 +26,35 @@ export default class TimerScreen extends React.Component {
         this.props.switchScreen('start')
     }
 
+    getSource = outcome => {
+        switch(outcome) {
+            case 'success':
+                return require('../../images/pet/dog/success-1.png')
+            case 'fail':
+                return require('../../images/pet/dog/fail-1.png')
+            default:
+                return require('../../images/pet/dog/success-1.png')
+        }
+    }
+
     componentDidMount () {
         if (this.state.outcome === 'success') {
             this.props.setStoredTotalMinutes()
         }
+        // TODO remove all delivered push notifications
+        PushNotification.cancelAllLocalNotifications()
     }
 
     render () {
         const { outcome } = this.state
-        const source = () => {
-            switch(outcome) {
-                case 'success':
-                    return require('../../images/pet/dog/success-1.png')
-                case 'fail':
-                    return require('../../images/pet/dog/fail-1.png')
-                default:
-                    return require('../../images/pet/dog/success-1.png')
-            }
-        }
 
         return ([
             <View key='0' style={styles.imageContainer}>
                 <Image
-                source={source()}
+                source={this.getSource(outcome)}
                 style={styles.image} />
             </View>,
+            <StartScreen key='unique' />,
             <View
                 key='1'
                 style={styles.buttonContainer}>

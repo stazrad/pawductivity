@@ -56,16 +56,23 @@ export default class App extends React.Component {
 
         switch(screen) {
             case 'start':
-                return <StartScreen onTimerStart={this.onTimerStart} switchScreen={this.switchScreen} />
+                return <StartScreen
+                        onTimerStart={this.onTimerStart}
+                        switchScreen={this.switchScreen} />
             case 'timer':
-                return <TimerScreen timer={timer} onTimerEnd={this.onTimerEnd} switchScreen={this.switchScreen} />
+                return <TimerScreen
+                        timer={timer}
+                        onTimerEnd={this.onTimerEnd}
+                        switchScreen={this.switchScreen} />
             case 'end':
                 return <EndScreen
                         outcome={outcome}
                         setStoredTotalMinutes={this.setStoredTotalMinutes}
                         switchScreen={this.switchScreen} />
             default:
-                return <StartScreen onTimerStart={this.onTimerStart} switchScreen={this.switchScreen} />
+                return <StartScreen
+                        onTimerStart={this.onTimerStart}
+                        switchScreen={this.switchScreen} />
             }
     }
 

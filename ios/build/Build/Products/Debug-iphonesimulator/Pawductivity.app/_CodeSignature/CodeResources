@@ -4,6 +4,18 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AppIcon60x60@2x.png</key>
+		<data>
+		sm/+vtjWO011cGrrC0sc6XEcODc=
+		</data>
+		<key>AppIcon60x60@3x.png</key>
+		<data>
+		WAVet53EDqeoKY0mtcjFahLwPlA=
+		</data>
+		<key>Assets.car</key>
+		<data>
+		FLqxLQyzdkSPQIa+Dj3M20oZ+MQ=
+		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
 		7PNbZDVJ9YsySsc/WBcLc3cIwzo=
@@ -71,7 +83,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		C7Q5qMaMGaDFWalZJHQdrZ022Ik=
+		wggkog0RSCmUZEFL6t5zfM+ctcg=
 		</data>
 		<key>Ionicons.ttf</key>
 		<data>
@@ -107,7 +119,7 @@
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/PawductivityTests</key>
 		<data>
-		tpR+Ytlsrvioie7TR3jsMKsjqfo=
+		NGCd/0nc0Swd4N5S9QxrNsUbiCM=
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
@@ -124,6 +136,39 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AppIcon60x60@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sm/+vtjWO011cGrrC0sc6XEcODc=
+			</data>
+			<key>hash2</key>
+			<data>
+			9Do/oTdMu0J0FkUnocUwJtk+Rj11bw3E3N+/GwlbNAE=
+			</data>
+		</dict>
+		<key>AppIcon60x60@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			WAVet53EDqeoKY0mtcjFahLwPlA=
+			</data>
+			<key>hash2</key>
+			<data>
+			37m9wxn3Am6WUSYL2TzmdUfyv//Tg4u7TbDv+77lg4M=
+			</data>
+		</dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			FLqxLQyzdkSPQIa+Dj3M20oZ+MQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			nIo3oOdgcmlynzL9zVliqBE7yCiqtyTnU4VflvXiE3E=
+			</data>
+		</dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
@@ -372,11 +417,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tpR+Ytlsrvioie7TR3jsMKsjqfo=
+			NGCd/0nc0Swd4N5S9QxrNsUbiCM=
 			</data>
 			<key>hash2</key>
 			<data>
-			Rd/MnksfTPc33gJhHbdMJuOgeNPeBd0d0V3eaKL5B90=
+			D3SlBCqCN2k+g70cY0Ya0o9uaG/i+KvntELeY6f0rTo=
 			</data>
 		</dict>
 		<key>PlugIns/PawductivityTests.xctest/_CodeSignature/CodeResources</key>

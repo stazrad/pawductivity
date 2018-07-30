@@ -16,8 +16,8 @@ export default class Timer extends React.Component {
             startTime: props.timer.startTime,
             started: false,
             leftAppAt: null,
-            minutes: props.timer.amount - 1,
-            seconds: 59
+            minutes: 0,// props.timer.amount - 1, FIXME
+            seconds: 5
         }
     }
 
@@ -48,19 +48,19 @@ export default class Timer extends React.Component {
     }
 
     handleAppStateChange = appState => {
+        // TODO figure out how to check if phone locked
+        console.log('appState', appState)
         if (appState === 'background') {
             // https://facebook.github.io/react-native/docs/pushnotificationios.html
             const details = {
-                alertBody: 'You left the app, bitch!'
+                alertBody: 'Don\'t get distracted! Hurry back to continue being pawductive!'
             }
 
             PushNotification.presentLocalNotification(details)
-            this.setState({ leftAppAt: new Date()})
+            this.setState({ leftAppAt: new Date() })
         } else if (appState === 'active') {
             const now = new Date()
             const timeAway = now - this.state.leftAppAt
-
-            alert(timeAway)
 
             if (timeAway > 10000) {
                 this.props.onTimerEnd('fail')
@@ -73,7 +73,7 @@ export default class Timer extends React.Component {
         AppState.addEventListener('change', this.handleAppStateChange)
     }
 
-    componentWillUnMount () {
+    componentWillUnmount () {
         AppState.removeEventListener('change', this.handleAppStateChange)
     }
 
