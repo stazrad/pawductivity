@@ -4,6 +4,7 @@ import {
     AsyncStorage,
     Button,
     Image,
+    PushNotificationIOS,
     StyleSheet,
     View
 } from 'react-native'
@@ -52,8 +53,11 @@ export default class TimerScreen extends React.Component {
         if (this.state.outcome === 'success') {
             this.props.setStoredTotalMinutes()
         }
-        // TODO remove all delivered push notifications
-        PushNotification.cancelAllLocalNotifications()
+        // remove all delivered push notifications
+        PushNotificationIOS.getDeliveredNotifications(notifications => {
+            const identifiers = notifications.map(n => n.identifier)
+            PushNotificationIOS.removeDeliveredNotifications(identifiers)
+        })
     }
 
     render () {

@@ -1,6 +1,6 @@
 // packages
 import React from 'react'
-import { AppState, Text } from 'react-native'
+import { AppState, PushNotificationIOS, Text } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 
 // imports
@@ -56,7 +56,7 @@ export default class Timer extends React.Component {
                 alertBody: 'Don\'t get distracted! Hurry back to continue being pawductive!'
             }
 
-            PushNotification.presentLocalNotification(details)
+            PushNotificationIOS.presentLocalNotification(details)
             this.setState({ leftAppAt: new Date() })
         } else if (appState === 'active') {
             const now = new Date()
