@@ -14,6 +14,8 @@ import LockState from 'react-native-lockstate'
 import theme from '../../theme'
 
 let started = false
+let timeOfInactive
+let timeOfBackground
 
 export default class Timer extends React.Component {
     constructor (props) {
@@ -65,21 +67,23 @@ export default class Timer extends React.Component {
     }
 
     handleAppStateChange = (appState, locked) => {
-        console.log('appState/locked', appState, locked)
-        const sender = () => setTimeout(() => {this.sendPushNotification('DIS BETTA BE LOCKED MFER');console.log('SENT MFER')},90)
-        if (locked && appState === 'inactive') {
-            // this catch is for phone lock
-            // when the phone is locked, delayed events do not get through
-            sender()
-            this.setState({ leftAppAt: new Date() })
-            return
-        }
         if (appState === 'inactive') {
-            console.log('CLEAR TIMEOUT')
-            clearTimeout(sender)
-            this.sendPushNotification()
-            this.setState({ leftAppAt: new Date() })
-        } else if (appState === 'active') {
+            timeOfInactive = new Date()
+        } else if (appState === 'background') {
+            timeOfBackground = new Date()
+            const timeDifference = Math.abs(timeOfInactive - timeOfBackground)
+            console.log(timeDifference)
+
+            if (timeDifference < 100) {
+                // reasonably believe this is a phone lock
+                this.sendPushNotification('Probably a lock screen?')
+            } else {
+                // reasonably belive this is a home button
+                this.sendPushNotification('Did you push the home button?')
+            }
+            this.setState({ leftAppAt: timeOfBackground })
+        }
+        if (appState === 'active') {
             const now = new Date()
             const timeAway = now - this.state.leftAppAt
 
@@ -90,18 +94,15 @@ export default class Timer extends React.Component {
     }
 
     handleLockStateChange = ({ lockState }) => {
-        console.log('HANDLE LOCK', lockState)
-        const locked = lockState === 'locked'
-
-        if (locked) this.sendPushNotification()
-        this.setState({ locked })
+        // const locked = lockState === 'locked'
+        //
+        // if (locked) this.sendPushNotification('PHONE LOCKED')
+        // this.setState({ locked })
     }
 
     componentDidMount () {
-        console.log('DID MOUNT')
         this.runTimer()
-        AppState.addEventListener('change', (state) => setTimeout(this.handleAppStateChange.bind(this, state, false), 10))
-        AppState.addEventListener('change', this.handleAppStateChange.bind(this, true))
+        AppState.addEventListener('change', this.handleAppStateChange)
         LockState.addEventListener('change', this.handleLockStateChange)
     }
 
