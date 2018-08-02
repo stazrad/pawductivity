@@ -55,25 +55,29 @@ export default class Timer extends React.Component {
         started = true
     }
 
-    handleAppStateChange = appState => {
-        console.log(appState)
-        if (typeof appState === 'object') {
-            console.log('obj', appState)
-            if (appState.lockState === 'locked') {
-                console.log('locked')
-                this.setState({ locked: true })
-            } else {
-                this.setState({ locked: false })
-            }
+    sendPushNotification = body => {
+        // https://facebook.github.io/react-native/docs/pushnotificationios.html
+        const details = {
+            alertBody: body || 'Don\'t get distracted! Hurry back to continue being pawductive!'
+        }
+
+        PushNotificationIOS.presentLocalNotification(details)
+    }
+
+    handleAppStateChange = (appState, locked) => {
+        console.log('appState/locked', appState, locked)
+        const sender = () => setTimeout(() => {this.sendPushNotification('DIS BETTA BE LOCKED MFER');console.log('SENT MFER')},90)
+        if (locked && appState === 'inactive') {
+            // this catch is for phone lock
+            // when the phone is locked, delayed events do not get through
+            sender()
+            this.setState({ leftAppAt: new Date() })
             return
         }
-        if (appState === 'background' && !this.state.locked) {
-            // https://facebook.github.io/react-native/docs/pushnotificationios.html
-            const details = {
-                alertBody: 'Don\'t get distracted! Hurry back to continue being pawductive!'
-            }
-
-            PushNotificationIOS.presentLocalNotification(details)
+        if (appState === 'inactive') {
+            console.log('CLEAR TIMEOUT')
+            clearTimeout(sender)
+            this.sendPushNotification()
             this.setState({ leftAppAt: new Date() })
         } else if (appState === 'active') {
             const now = new Date()
@@ -85,24 +89,25 @@ export default class Timer extends React.Component {
         }
     }
 
-    handleLockStateChange = lockState => {
-        console.log('lockState', lockState)
-        if (lockState === 'locked') {
-            this.setState({ locked: true })
-        } else {
-            this.setState({ locked: false })
-        }
+    handleLockStateChange = ({ lockState }) => {
+        console.log('HANDLE LOCK', lockState)
+        const locked = lockState === 'locked'
+
+        if (locked) this.sendPushNotification()
+        this.setState({ locked })
     }
 
     componentDidMount () {
+        console.log('DID MOUNT')
         this.runTimer()
-        AppState.addEventListener('change', this.handleAppStateChange)
-        LockState.addEventListener('change', this.handleAppStateChange)
+        AppState.addEventListener('change', (state) => setTimeout(this.handleAppStateChange.bind(this, state, false), 10))
+        AppState.addEventListener('change', this.handleAppStateChange.bind(this, true))
+        LockState.addEventListener('change', this.handleLockStateChange)
     }
 
     componentWillUnmount () {
         AppState.removeEventListener('change', this.handleAppStateChange)
-        LockState.removeEventListener('change', this.handleAppStateChange)
+        LockState.removeEventListener('change', this.handleLockStateChange)
     }
 
     render () {
