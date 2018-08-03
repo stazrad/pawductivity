@@ -10,6 +10,8 @@ import RN, {
 } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 import { createStackNavigator } from 'react-navigation'
+import moment from 'moment'
+moment().format()
 
 // imports
 import EndScreen from './EndScreen'

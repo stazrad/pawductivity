@@ -9,11 +9,11 @@ import {
 } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 import LockState from 'react-native-lockstate'
+import moment from 'moment'
 
 // imports
 import theme from '../../theme'
 
-let started = false
 let timeOfInactive
 let timeOfBackground
 
@@ -23,11 +23,10 @@ export default class Timer extends React.Component {
 
         this.state = {
             startTime: props.timer.startTime,
-            started: false,
             leftAppAt: null,
-            phoneLocked: false,
-            minutes: props.timer.amount - 1,
-            seconds: 59
+            unlocking: false,
+            minutes: 0,//props.timer.amount - 1,
+            seconds: 10
         }
     }
 
@@ -53,8 +52,6 @@ export default class Timer extends React.Component {
                 this.props.onTimerEnd('success')
             }
         }, 1000)
-
-        started = true
     }
 
     sendPushNotification = body => {
@@ -66,7 +63,7 @@ export default class Timer extends React.Component {
         PushNotificationIOS.presentLocalNotification(details)
     }
 
-    handleAppStateChange = (appState, locked) => {
+    handleAppStateChange = appState => {
         if (appState === 'inactive') {
             timeOfInactive = new Date()
         } else if (appState === 'background') {
@@ -76,14 +73,24 @@ export default class Timer extends React.Component {
 
             if (timeDifference < 100) {
                 // reasonably believe this is a phone lock
-                this.sendPushNotification('Probably a lock screen?')
+                const { minutes, seconds } = this.state
+                // send push notification at the remainder of the timer from now
+                const fireDate = moment().add(minutes, 'minutes').add(parseFloat(seconds), 'seconds')
+                const details = {
+                    alertTitle: '🐶 Way to go human!',
+                    alertBody: `We stayed pawductive for ${this.props.timer.amount} minutes!`,
+                    fireDate
+                }
+
+                PushNotificationIOS.scheduleLocalNotification(details)
+                this.setState({ successTime: fireDate })
             } else {
                 // reasonably belive this is a home button
                 this.sendPushNotification('Did you push the home button?')
+                this.setState({ leftAppAt: timeOfBackground, unlocking: false })
             }
-            this.setState({ leftAppAt: timeOfBackground })
         }
-        if (appState === 'active') {
+        if (appState === 'active' && !this.state.unlocking) {
             const now = new Date()
             const timeAway = now - this.state.leftAppAt
 
@@ -94,10 +101,20 @@ export default class Timer extends React.Component {
     }
 
     handleLockStateChange = ({ lockState }) => {
-        // const locked = lockState === 'locked'
-        //
-        // if (locked) this.sendPushNotification('PHONE LOCKED')
-        // this.setState({ locked })
+        const locked = lockState === 'locked'
+        const { successTime } = this.state
+
+        if (lockState === 'unlocked') {
+            const now = new Date()
+
+            if (now - successTime > 0) {
+                return this.props.onTimerEnd('success')
+            }
+            // TODO set new time in state
+            this.setState({ minutes: 69, seconds: 69, unlocking: true })
+        }
+        console.log('locked', locked)
+        this.setState({ locked })
     }
 
     componentDidMount () {
