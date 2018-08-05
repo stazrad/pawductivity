@@ -25,13 +25,14 @@ export default class Timer extends React.Component {
             startTime: props.timer.startTime,
             leftAppAt: null,
             unlocking: false,
-            minutes: 0,//props.timer.amount - 1,
-            seconds: 10
+            minutes: props.timer.amount - 1,
+            seconds: 59
         }
     }
 
     runTimer = () => {
         const { startTime } = this.state
+        console.log('runTimer')
 
         const logger = setInterval(() => {
             let minutes = this.state.minutes
@@ -47,7 +48,7 @@ export default class Timer extends React.Component {
 
             this.setState({minutes, seconds})
 
-            if (minutes === 0 && seconds == 0) {
+            if (minutes == 0 && seconds == 0) {
                 clearInterval(logger)
                 this.props.onTimerEnd('success')
             }
@@ -65,6 +66,7 @@ export default class Timer extends React.Component {
 
     handleAppStateChange = appState => {
         if (appState === 'inactive') {
+            // inactive always fires before background
             timeOfInactive = new Date()
         } else if (appState === 'background') {
             timeOfBackground = new Date()
@@ -85,36 +87,49 @@ export default class Timer extends React.Component {
                 PushNotificationIOS.scheduleLocalNotification(details)
                 this.setState({ successTime: fireDate })
             } else {
-                // reasonably belive this is a home button
+                // reasonably believe this is a home button
                 this.sendPushNotification('Did you push the home button?')
-                this.setState({ leftAppAt: timeOfBackground, unlocking: false })
+                this.setState({ unlocking: false })
             }
+            this.setState({ leftAppAt: timeOfBackground })
         }
         if (appState === 'active' && !this.state.unlocking) {
             const now = new Date()
             const timeAway = now - this.state.leftAppAt
 
             if (timeAway > 10000) {
+                // returned from home button too late
                 this.props.onTimerEnd('fail')
+            } else {
+                // returned from home button in time
+                PushNotificationIOS.getDeliveredNotifications(notifications => {
+                    const identifiers = notifications.map(n => n.identifier)
+                    PushNotificationIOS.removeDeliveredNotifications(identifiers)
+                })
             }
         }
     }
 
     handleLockStateChange = ({ lockState }) => {
         const locked = lockState === 'locked'
-        const { successTime } = this.state
+        const { leftAppAt, minutes, seconds, successTime } = this.state
 
         if (lockState === 'unlocked') {
+            // returned from a phone lock
             const now = new Date()
 
             if (now - successTime > 0) {
                 return this.props.onTimerEnd('success')
             }
-            // TODO set new time in state
-            this.setState({ minutes: 69, seconds: 69, unlocking: true })
+            // unlocked with time remaining
+            PushNotificationIOS.cancelAllLocalNotifications()
+            const rawMin = moment.duration(successTime.diff(now)).asMinutes()
+            const minRemaining = Math.floor(rawMin)
+            let secRemaining = Math.floor((Math.abs(rawMin) * 60) % 60)
+
+            if (secRemaining < 10) secRemaining = '0' + secRemaining
+            this.setState({ minutes: minRemaining, seconds: secRemaining, unlocking: true })
         }
-        console.log('locked', locked)
-        this.setState({ locked })
     }
 
     componentDidMount () {
