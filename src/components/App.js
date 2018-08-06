@@ -102,6 +102,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount () {
+        this.getStoredTotalMinutes().then(res => console.log(res))
         PushNotification.configure({
             // (optional) Called when Token is generated (iOS and Android)
             onRegister: (token) => {
