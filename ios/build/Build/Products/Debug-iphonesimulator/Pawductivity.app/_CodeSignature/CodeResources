@@ -111,7 +111,7 @@
 		</data>
 		<key>PlugIns/PawductivityTests.xctest.dSYM/Contents/Resources/DWARF/PawductivityTests</key>
 		<data>
-		dRgyiuElIBcJEg7YDBoiFs63vfc=
+		bMtydRwAYVflfqFqA1rnWHCmSgQ=
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/Info.plist</key>
 		<data>
@@ -119,7 +119,7 @@
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/PawductivityTests</key>
 		<data>
-		Sl1hrIQPU+0vl889bsBkG1iIT7g=
+		0WwMygUN3LaZj6ozVCsuYKDKaIg=
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
@@ -395,11 +395,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dRgyiuElIBcJEg7YDBoiFs63vfc=
+			bMtydRwAYVflfqFqA1rnWHCmSgQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			kAyhKbz+jmW6Cq/ZPjJIYvOB4S7SkL1XaSq2QI2iVFw=
+			PB45blOhY4oZEReWzsYG4MlGV7KMOsdxKNk+8/N/SFg=
 			</data>
 		</dict>
 		<key>PlugIns/PawductivityTests.xctest/Info.plist</key>
@@ -417,11 +417,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Sl1hrIQPU+0vl889bsBkG1iIT7g=
+			0WwMygUN3LaZj6ozVCsuYKDKaIg=
 			</data>
 			<key>hash2</key>
 			<data>
-			CNjniHVXxC+0unTCDBzkFPr7X5sQay6iHMgps0OuC0Y=
+			kYQCHSu6vCFyii6LSKmoyGadWHBrszdnrbm7smrPtKE=
 			</data>
 		</dict>
 		<key>PlugIns/PawductivityTests.xctest/_CodeSignature/CodeResources</key>
