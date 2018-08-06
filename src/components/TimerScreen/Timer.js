@@ -25,6 +25,7 @@ export default class Timer extends React.Component {
             startTime: props.timer.startTime,
             leftAppAt: null,
             unlocking: false,
+            failed: false,
             minutes: props.timer.amount - 1,
             seconds: 59
         }
@@ -32,7 +33,6 @@ export default class Timer extends React.Component {
 
     runTimer = () => {
         const { startTime } = this.state
-        console.log('runTimer')
 
         const logger = setInterval(() => {
             let minutes = this.state.minutes
@@ -46,7 +46,7 @@ export default class Timer extends React.Component {
                 seconds = '0' + seconds
             }
 
-            this.setState({minutes, seconds})
+            if (!this.state.failed) this.setState({minutes, seconds})
 
             if (minutes == 0 && seconds == 0) {
                 clearInterval(logger)
@@ -58,6 +58,7 @@ export default class Timer extends React.Component {
     sendPushNotification = body => {
         // https://facebook.github.io/react-native/docs/pushnotificationios.html
         const details = {
+            alertTitle: '🐶 Oh no!',
             alertBody: body || 'Don\'t get distracted! Hurry back to continue being pawductive!'
         }
 
@@ -71,6 +72,7 @@ export default class Timer extends React.Component {
         } else if (appState === 'background') {
             timeOfBackground = new Date()
             const timeDifference = Math.abs(timeOfInactive - timeOfBackground)
+            // TODO persist timeDifference data somewhere
             console.log(timeDifference)
 
             if (timeDifference < 100) {
@@ -88,7 +90,7 @@ export default class Timer extends React.Component {
                 this.setState({ successTime: fireDate })
             } else {
                 // reasonably believe this is a home button
-                this.sendPushNotification('Did you push the home button?')
+                this.sendPushNotification()
                 this.setState({ unlocking: false })
             }
             this.setState({ leftAppAt: timeOfBackground })
@@ -99,6 +101,7 @@ export default class Timer extends React.Component {
 
             if (timeAway > 10000) {
                 // returned from home button too late
+                this.setState({ failed: true })
                 this.props.onTimerEnd('fail')
             } else {
                 // returned from home button in time
