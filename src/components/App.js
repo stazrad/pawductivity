@@ -103,7 +103,6 @@ export default class App extends React.Component {
     }
 
     componentDidMount () {
-        this.getStoredTotalMinutes().then(res => console.log(res))
         PushNotification.configure({
             // (optional) Called when Token is generated (iOS and Android)
             onRegister: (token) => {
@@ -144,7 +143,7 @@ export default class App extends React.Component {
             <View style={styles.container}>
                 <View style={styles.logoContainer}>
                     <Image
-                    source={require('../images/logo.png')}
+                    source={require('../images/logo-text.png')}
                     style={styles.image} />
                 </View>
                 {this.screenSwitcher()}
@@ -169,7 +168,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         marginTop: 25,
         marginBottom: 40,
-        height: 22,
+        height: 28,
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
@@ -180,6 +179,6 @@ const styles = StyleSheet.create({
         flex: 1,
         height: undefined,
         width: undefined,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
     },
 })
