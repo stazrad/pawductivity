@@ -16,6 +16,7 @@
 		00E356F31AD99517003FC87E /* PawductivityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PawductivityTests.m */; };
 		0201273F210974AA00908805 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		02662B5720EC90F0006BC221 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02662B5120EC8F58006BC221 /* libRCTPushNotification.a */; };
+		02EBBDB5211A997B0013DE66 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EBBDB4211A99650013DE66 /* libSplashScreen.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -153,6 +154,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3D05745F1DE6004600184BB4;
 			remoteInfo = "RCTPushNotification-tvOS";
+		};
+		02EBBDB3211A99650013DE66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02EBBDAF211A99640013DE66 /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -403,6 +411,7 @@
 		020127F9210FC73F00908805 /* RNLockState.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNLockState.xcodeproj; path = "../node_modules/react-native-lockstate/ios/RNLockState.xcodeproj"; sourceTree = "<group>"; };
 		02662B4B20EC8F58006BC221 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		02662B5820EC9296006BC221 /* Pawductivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Pawductivity.entitlements; path = Pawductivity/Pawductivity.entitlements; sourceTree = "<group>"; };
+		02EBBDAF211A99640013DE66 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		0822BD820F644F40A6998092 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		0A491E3DAE9541CDBF59E761 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		0BEFA6CFC4604C209303EE4E /* libRNLockState.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNLockState.a; sourceTree = "<group>"; };
@@ -451,6 +460,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02EBBDB5211A997B0013DE66 /* libSplashScreen.a in Frameworks */,
 				02662B5720EC90F0006BC221 /* libRCTPushNotification.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				0201273F210974AA00908805 /* libRCTAnimation.a in Frameworks */,
@@ -622,6 +632,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		02EBBDB0211A99640013DE66 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02EBBDB4211A99650013DE66 /* libSplashScreen.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -710,6 +728,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				02EBBDAF211A99640013DE66 /* SplashScreen.xcodeproj */,
 				020127F9210FC73F00908805 /* RNLockState.xcodeproj */,
 				020127B22109853500908805 /* RNReactNativeHapticFeedback.xcodeproj */,
 				02662B4B20EC8F58006BC221 /* RCTPushNotification.xcodeproj */,
@@ -990,6 +1009,10 @@
 					ProductGroup = 02662B4620EC8EAC006BC221 /* Products */;
 					ProjectRef = E3094F85041B47FAB07A39C0 /* RNVectorIcons.xcodeproj */;
 				},
+				{
+					ProductGroup = 02EBBDB0211A99640013DE66 /* Products */;
+					ProjectRef = 02EBBDAF211A99640013DE66 /* SplashScreen.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1091,6 +1114,13 @@
 			fileType = archive.ar;
 			path = "libRCTPushNotification-tvOS.a";
 			remoteRef = 02662B5220EC8F58006BC221 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		02EBBDB4211A99650013DE66 /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = 02EBBDB3211A99650013DE66 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
@@ -1535,6 +1565,7 @@
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/react-native-lockstate/ios",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = Pawductivity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1562,6 +1593,7 @@
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/react-native-lockstate/ios",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = Pawductivity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

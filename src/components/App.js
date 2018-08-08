@@ -10,6 +10,7 @@ import RN, {
 } from 'react-native'
 import PushNotification from 'react-native-push-notification'
 import { createStackNavigator } from 'react-navigation'
+import SplashScreen from 'react-native-splash-screen'
 import moment from 'moment'
 moment().format()
 
@@ -133,6 +134,7 @@ export default class App extends React.Component {
               */
             requestPermissions: true,
         })
+        SplashScreen.hide()
     }
 
     render () {

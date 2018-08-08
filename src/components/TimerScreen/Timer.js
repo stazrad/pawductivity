@@ -58,7 +58,7 @@ export default class Timer extends React.Component {
     sendPushNotification = body => {
         // https://facebook.github.io/react-native/docs/pushnotificationios.html
         const details = {
-            alertTitle: '🐶 Uh oh!',
+            alertTitle: '🐶 ruh roh!',
             alertBody: body || 'Did you get distracted by a squirrel?!'
         }
 
