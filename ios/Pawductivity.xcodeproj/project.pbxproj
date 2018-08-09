@@ -46,7 +46,6 @@
 		652C1B4DBCA8456E8A301BB9 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 348D14DB9EE041AC9385F69E /* MaterialIcons.ttf */; };
 		6698E54F4DDD454BAE3870DE /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 983CFBDDB82D44EE8F7D3AD8 /* Entypo.ttf */; };
 		6C35679A614E4CD582EC125C /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F53B46FB9D49B6838F485F /* libRNReactNativeHapticFeedback.a */; };
-		70265F1C06984612B197E63E /* libRNLockState.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEFA6CFC4604C209303EE4E /* libRNLockState.a */; };
 		767B3F74B7BD445D8A02474C /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E4660C8432C45ABB5DC4CC7 /* SimpleLineIcons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		98D28A9DE186484D9FC75E9B /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A491E3DAE9541CDBF59E761 /* libRNVectorIcons.a */; };
@@ -119,20 +118,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNReactNativeHapticFeedback;
-		};
-		020127F7210FC70600908805 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 722E38DF507D40DE9F228150 /* RNLockState.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNLockState;
-		};
-		020127FD210FC73F00908805 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 020127F9210FC73F00908805 /* RNLockState.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNLockState;
 		};
 		02662B4920EC8EAC006BC221 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -408,7 +393,6 @@
 		01F53B46FB9D49B6838F485F /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = "<group>"; };
 		020127AA2109851F00908805 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		020127B22109853500908805 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
-		020127F9210FC73F00908805 /* RNLockState.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNLockState.xcodeproj; path = "../node_modules/react-native-lockstate/ios/RNLockState.xcodeproj"; sourceTree = "<group>"; };
 		02662B4B20EC8F58006BC221 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		02662B5820EC9296006BC221 /* Pawductivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Pawductivity.entitlements; path = Pawductivity/Pawductivity.entitlements; sourceTree = "<group>"; };
 		02EBBDAF211A99640013DE66 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
@@ -434,7 +418,6 @@
 		313F11E2199C4ADCA2E43B6D /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		348D14DB9EE041AC9385F69E /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		722E38DF507D40DE9F228150 /* RNLockState.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNLockState.xcodeproj; path = "../node_modules/react-native-lockstate/ios/RNLockState.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8E34128B56B045AA8B5C8C02 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
@@ -476,7 +459,6 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				98D28A9DE186484D9FC75E9B /* libRNVectorIcons.a in Frameworks */,
 				6C35679A614E4CD582EC125C /* libRNReactNativeHapticFeedback.a in Frameworks */,
-				70265F1C06984612B197E63E /* libRNLockState.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,22 +567,6 @@
 			isa = PBXGroup;
 			children = (
 				020127B72109853500908805 /* libRNReactNativeHapticFeedback.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		020127F4210FC70600908805 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				020127F8210FC70600908805 /* libRNLockState.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		020127FA210FC73F00908805 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				020127FE210FC73F00908805 /* libRNLockState.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -729,7 +695,6 @@
 			isa = PBXGroup;
 			children = (
 				02EBBDAF211A99640013DE66 /* SplashScreen.xcodeproj */,
-				020127F9210FC73F00908805 /* RNLockState.xcodeproj */,
 				020127B22109853500908805 /* RNReactNativeHapticFeedback.xcodeproj */,
 				02662B4B20EC8F58006BC221 /* RCTPushNotification.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -746,7 +711,6 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				E3094F85041B47FAB07A39C0 /* RNVectorIcons.xcodeproj */,
 				8E34128B56B045AA8B5C8C02 /* RNReactNativeHapticFeedback.xcodeproj */,
-				722E38DF507D40DE9F228150 /* RNLockState.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -986,14 +950,6 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 020127F4210FC70600908805 /* Products */;
-					ProjectRef = 722E38DF507D40DE9F228150 /* RNLockState.xcodeproj */;
-				},
-				{
-					ProductGroup = 020127FA210FC73F00908805 /* Products */;
-					ProjectRef = 020127F9210FC73F00908805 /* RNLockState.xcodeproj */;
-				},
-				{
 					ProductGroup = 020127AB2109851F00908805 /* Products */;
 					ProjectRef = 020127AA2109851F00908805 /* RNReactNativeHapticFeedback.xcodeproj */;
 				},
@@ -1079,20 +1035,6 @@
 			fileType = archive.ar;
 			path = libRNReactNativeHapticFeedback.a;
 			remoteRef = 020127B62109853500908805 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		020127F8210FC70600908805 /* libRNLockState.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNLockState.a;
-			remoteRef = 020127F7210FC70600908805 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		020127FE210FC73F00908805 /* libRNLockState.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNLockState.a;
-			remoteRef = 020127FD210FC73F00908805 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		02662B4A20EC8EAC006BC221 /* libRNVectorIcons.a */ = {
@@ -1576,6 +1518,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.Pawductivity;
 				PRODUCT_NAME = Pawductivity;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1604,6 +1547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.Pawductivity;
 				PRODUCT_NAME = Pawductivity;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1787,6 +1731,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1840,6 +1785,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
