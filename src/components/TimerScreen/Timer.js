@@ -24,7 +24,7 @@ export default class Timer extends React.Component {
             startTime: props.timer.startTime,
             leftAppAt: null,
             unlocking: false,
-            failed: false,
+            timerEnded: false,
             minutes: props.timer.amount - 1,
             seconds: 59
         }
@@ -45,7 +45,7 @@ export default class Timer extends React.Component {
                 seconds = '0' + seconds
             }
 
-            if (!this.state.failed) this.setState({minutes, seconds})
+            if (!this.state.timerEnded) this.setState({minutes, seconds})
 
             if (minutes == 0 && seconds == 0) {
                 clearInterval(logger)
@@ -104,7 +104,7 @@ export default class Timer extends React.Component {
 
             if (timeAway > 10000) {
                 // returned from home button too late
-                this.setState({ failed: true })
+                this.setState({ timerEnded: true })
                 this.props.onTimerEnd('fail')
             } else {
                 // returned from home button in time
@@ -119,6 +119,7 @@ export default class Timer extends React.Component {
             const { leftAppAt, minutes, seconds, successTime } = this.state
             // unlock after timer complete
             if (now - successTime > 0) {
+                this.setState({ timerEnded: true })
                 return this.props.onTimerEnd('success')
             }
 
