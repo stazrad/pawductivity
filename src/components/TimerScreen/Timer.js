@@ -8,7 +8,6 @@ import {
     Text
 } from 'react-native'
 import PushNotification from 'react-native-push-notification'
-import LockState from 'react-native-lockstate'
 import moment from 'moment'
 
 // imports
@@ -66,6 +65,7 @@ export default class Timer extends React.Component {
     }
 
     handleAppStateChange = appState => {
+        // leave app (home or lock)
         if (appState === 'inactive') {
             // inactive always fires before background
             timeOfInactive = new Date()
@@ -87,15 +87,18 @@ export default class Timer extends React.Component {
                 }
 
                 PushNotificationIOS.scheduleLocalNotification(details)
-                this.setState({ successTime: fireDate })
+                this.setState({ successTime: fireDate, locked: true })
             } else {
                 // reasonably believe this is a home button
                 this.sendPushNotification()
-                this.setState({ unlocking: false })
+                this.setState({ locked: false })
             }
             this.setState({ leftAppAt: timeOfBackground })
         }
-        if (appState === 'active' && !this.state.unlocking) {
+
+        // return to app
+        if (appState === 'active' && !this.state.locked) {
+            // return from a home button
             const now = new Date()
             const timeAway = now - this.state.leftAppAt
 
@@ -110,20 +113,15 @@ export default class Timer extends React.Component {
                     PushNotificationIOS.removeDeliveredNotifications(identifiers)
                 })
             }
-        }
-    }
-
-    handleLockStateChange = ({ lockState }) => {
-        const locked = lockState === 'locked'
-        const { leftAppAt, minutes, seconds, successTime } = this.state
-
-        if (lockState === 'unlocked') {
+        } else if (appState === 'active' && this.state.locked) {
             // returned from a phone lock
             const now = new Date()
-
+            const { leftAppAt, minutes, seconds, successTime } = this.state
+            // unlock after timer complete
             if (now - successTime > 0) {
                 return this.props.onTimerEnd('success')
             }
+
             // unlocked with time remaining
             PushNotificationIOS.cancelAllLocalNotifications()
             const rawMin = moment.duration(successTime.diff(now)).asMinutes()
@@ -131,19 +129,21 @@ export default class Timer extends React.Component {
             let secRemaining = Math.floor((Math.abs(rawMin) * 60) % 60)
 
             if (secRemaining < 10) secRemaining = '0' + secRemaining
-            this.setState({ minutes: minRemaining, seconds: secRemaining, unlocking: true })
+            this.setState({
+                minutes: minRemaining,
+                seconds: secRemaining,
+                locked: false
+            })
         }
     }
 
     componentDidMount () {
         this.runTimer()
         AppState.addEventListener('change', this.handleAppStateChange)
-        LockState.addEventListener('change', this.handleLockStateChange)
     }
 
     componentWillUnmount () {
         AppState.removeEventListener('change', this.handleAppStateChange)
-        LockState.removeEventListener('change', this.handleLockStateChange)
     }
 
     render () {
