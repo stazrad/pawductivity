@@ -59,7 +59,7 @@ export default class Timer extends React.Component {
         // https://facebook.github.io/react-native/docs/pushnotificationios.html
         const details = {
             alertTitle: '🐶 Oh no!',
-            alertBody: body || 'Don\'t get distracted! Hurry back to continue being pawductive!'
+            alertBody: body || 'Did you get distracted by a squirrel?!'
         }
 
         PushNotificationIOS.presentLocalNotification(details)

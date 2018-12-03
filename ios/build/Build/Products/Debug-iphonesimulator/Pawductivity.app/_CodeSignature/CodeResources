@@ -4,6 +4,30 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AppIcon20x20@2x.png</key>
+		<data>
+		88mX9nBtw+dOwIZU3Yhcbf55KD8=
+		</data>
+		<key>AppIcon20x20@3x.png</key>
+		<data>
+		M5ve6vMXT0oDyU6vaubSD17RLeE=
+		</data>
+		<key>AppIcon29x29@2x.png</key>
+		<data>
+		/7aiizOhUyaetDrzQba9e1V7iCw=
+		</data>
+		<key>AppIcon29x29@3x.png</key>
+		<data>
+		0pUtRcSUQd05YfyDsFPv8VbcfFk=
+		</data>
+		<key>AppIcon40x40@2x.png</key>
+		<data>
+		g9ysrhEMultPixYE8IP2E/ckAUA=
+		</data>
+		<key>AppIcon40x40@3x.png</key>
+		<data>
+		TD9aTYx8N3Dz9ZwZxyKutOpLRFk=
+		</data>
 		<key>AppIcon60x60@2x.png</key>
 		<data>
 		sm/+vtjWO011cGrrC0sc6XEcODc=
@@ -14,11 +38,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		FLqxLQyzdkSPQIa+Dj3M20oZ+MQ=
+		J8HS+WcXWVnFuvQnojfa3psLWOo=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		7PNbZDVJ9YsySsc/WBcLc3cIwzo=
+		8SE2LuoDYiXfkClu+aEcAukOoBw=
 		</data>
 		<key>Entypo.ttf</key>
 		<data>
@@ -83,7 +107,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		wggkog0RSCmUZEFL6t5zfM+ctcg=
+		uN5CFI1plTvySJalzrBs58QlySg=
 		</data>
 		<key>Ionicons.ttf</key>
 		<data>
@@ -111,7 +135,7 @@
 		</data>
 		<key>PlugIns/PawductivityTests.xctest.dSYM/Contents/Resources/DWARF/PawductivityTests</key>
 		<data>
-		bMtydRwAYVflfqFqA1rnWHCmSgQ=
+		dRgyiuElIBcJEg7YDBoiFs63vfc=
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/Info.plist</key>
 		<data>
@@ -119,7 +143,7 @@
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/PawductivityTests</key>
 		<data>
-		0WwMygUN3LaZj6ozVCsuYKDKaIg=
+		dA6/xlB1ycX7MSS+aBLWAvEbZgo=
 		</data>
 		<key>PlugIns/PawductivityTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
@@ -136,6 +160,72 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AppIcon20x20@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			88mX9nBtw+dOwIZU3Yhcbf55KD8=
+			</data>
+			<key>hash2</key>
+			<data>
+			CCsoHsoB8NhYS4mBQvt6OXDt02XoT1jDKl6xvJs1Xfo=
+			</data>
+		</dict>
+		<key>AppIcon20x20@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			M5ve6vMXT0oDyU6vaubSD17RLeE=
+			</data>
+			<key>hash2</key>
+			<data>
+			L1m71Ycm4w+SnICSwGt6wXEEDpQGdGj0J1+Txtz2ZFA=
+			</data>
+		</dict>
+		<key>AppIcon29x29@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/7aiizOhUyaetDrzQba9e1V7iCw=
+			</data>
+			<key>hash2</key>
+			<data>
+			PLE9QLBGjc/3D1gHfYj4TCx1UvtfjqdpB/dFyO3GJhw=
+			</data>
+		</dict>
+		<key>AppIcon29x29@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			0pUtRcSUQd05YfyDsFPv8VbcfFk=
+			</data>
+			<key>hash2</key>
+			<data>
+			tp5OyTraqIQ673NK7c7yQ3sVKrUqeHMr/26MFVbVjXk=
+			</data>
+		</dict>
+		<key>AppIcon40x40@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			g9ysrhEMultPixYE8IP2E/ckAUA=
+			</data>
+			<key>hash2</key>
+			<data>
+			84q/2BkR80bB6K6+6nNBUCkJutGND1Jp1YzAPbWv4+U=
+			</data>
+		</dict>
+		<key>AppIcon40x40@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TD9aTYx8N3Dz9ZwZxyKutOpLRFk=
+			</data>
+			<key>hash2</key>
+			<data>
+			pE9UtiX24NP4iB9sMX8Epz5SLtXsSTtv9jpy19KDLP0=
+			</data>
+		</dict>
 		<key>AppIcon60x60@2x.png</key>
 		<dict>
 			<key>hash</key>
@@ -162,22 +252,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FLqxLQyzdkSPQIa+Dj3M20oZ+MQ=
+			J8HS+WcXWVnFuvQnojfa3psLWOo=
 			</data>
 			<key>hash2</key>
 			<data>
-			nIo3oOdgcmlynzL9zVliqBE7yCiqtyTnU4VflvXiE3E=
+			t4B4QYi+fA1AqW9QrIV5eGWN3pZB4Q0FcksM1CEVbG8=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7PNbZDVJ9YsySsc/WBcLc3cIwzo=
+			8SE2LuoDYiXfkClu+aEcAukOoBw=
 			</data>
 			<key>hash2</key>
 			<data>
-			iVvOG1G44uCh4+cpyctMOHBalOEnCILnqb3gdzvMFHw=
+			eJVFpcswHzAA07kniWsJYgk4ESROTA9V178LaJhjVo4=
 			</data>
 		</dict>
 		<key>Entypo.ttf</key>
@@ -395,11 +485,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bMtydRwAYVflfqFqA1rnWHCmSgQ=
+			dRgyiuElIBcJEg7YDBoiFs63vfc=
 			</data>
 			<key>hash2</key>
 			<data>
-			PB45blOhY4oZEReWzsYG4MlGV7KMOsdxKNk+8/N/SFg=
+			kAyhKbz+jmW6Cq/ZPjJIYvOB4S7SkL1XaSq2QI2iVFw=
 			</data>
 		</dict>
 		<key>PlugIns/PawductivityTests.xctest/Info.plist</key>
@@ -417,11 +507,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0WwMygUN3LaZj6ozVCsuYKDKaIg=
+			dA6/xlB1ycX7MSS+aBLWAvEbZgo=
 			</data>
 			<key>hash2</key>
 			<data>
-			kYQCHSu6vCFyii6LSKmoyGadWHBrszdnrbm7smrPtKE=
+			lZHxNsVqlcTkNrUUoL1tAVqfH4fDE4rAVvJt0SFmZeU=
 			</data>
 		</dict>
 		<key>PlugIns/PawductivityTests.xctest/_CodeSignature/CodeResources</key>
@@ -460,7 +550,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -491,24 +581,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -544,13 +622,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>
